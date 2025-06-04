@@ -74,7 +74,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
-    overflow-y: hidden; /* ADDED to hide main browser scrollbar */
 }
 
 @keyframes fadeInPage {
@@ -152,33 +151,9 @@ nav a:hover { /* This might be for old nav structure, review if needed */
 }
 
 main {
-    /* Previous padding: calc(var(--global-spacing-unit) * 2); */
-    /* Previous max-width: 1300px; */
-    /* Previous margin: 0 auto; */
-
-    padding: 5rem calc(var(--global-spacing-unit) * 2) 5rem; /* top/bottom adjusted, L/R kept */
-    margin: 0; /* REMOVED auto margin */
-    max-width: none; /* REMOVED max-width from main */
-
-    height: 100vh; /* ADDED */
-    box-sizing: border-box; /* ADDED */
-    overflow-y: auto; /* ADDED for scrollable main content */
-}
-
-/* Constrain and center the main content sections that were previously handled by 'main' element's max-width */
-.hero-section,
-.features,
-.container#dashboard,
-.contact-section,
-.profile-container,
-.about-container, /* Placeholder - verify actual class if about.html is styled */
-.services-container /* Placeholder - verify actual class if services.html is styled */
-{
-    max-width: 1300px;
-    margin-left: auto;
-    margin-right: auto;
-    /* Horizontal padding is often part of these sections themselves or their child elements */
-    /* Vertical margins are often provided by .card or .glass-card classes if used on these sections */
+    padding: calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
+    max-width: 1300px; /* Increased max-width */
+    margin: 0 auto;
 }
 
 footer {
@@ -203,11 +178,7 @@ footer {
         font-size: 1.375rem; /* Base h3 for tablets */
     }
     main {
-        /* padding: calc(var(--global-spacing-unit) * 1.5); */ /* Adjusted mobile padding - REPLACED BELOW */
-        padding-top: 8rem;    /* Adjusted for taller mobile header */
-        padding-bottom: 6rem; /* Adjusted for taller mobile footer */
-        padding-left: calc(var(--global-spacing-unit) * 1.5);  /* Retain from original media query */
-        padding-right: calc(var(--global-spacing-unit) * 1.5); /* Retain from original media query */
+        padding: calc(var(--global-spacing-unit) * 1.5); /* Adjusted mobile padding */
     }
     nav a { /* Old nav, if any */
         margin: 0 0.5rem;
@@ -739,34 +710,22 @@ body.animated-bg {
 
 /* Advanced Header and Footer Styles */
 .main-header {
-    /* margin: calc(var(--global-spacing-unit) * 1.5) auto; */ /* Use spacing unit */ /* REMOVED for fixed positioning */
-    padding: var(--global-spacing-unit) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */ /* KEPT for inner spacing */
-    /* border-radius: 16px; */ /* Slightly less rounded */ /* CHANGED */
-    border-radius: 0; /* ADJUSTED for fixed header */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Softer shadow */ /* KEPT */
-    background: var(--glass-bg); /* KEPT */
-    /* position: relative; */ /* Keep relative for z-index */ /* CHANGED */
-    position: fixed; /* ADDED */
-    top: 0; /* ADDED */
-    left: 0; /* ADDED */
-    right: 0; /* ADDED */
-    width: 100%; /* ADDED */
-    max-width: none; /* ADDED to override previous max-width */
-    margin: 0; /* ADDED to override previous margin */
-    z-index: 10; /* Ensure header is above other content */ /* KEPT */
-    color: var(--text-color); /* Should inherit from body or be set if different */ /* KEPT */
+    margin: calc(var(--global-spacing-unit) * 1.5) auto; /* Use spacing unit */
+    padding: var(--global-spacing-unit) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
+    border-radius: 16px; /* Slightly less rounded */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    background: var(--glass-bg);
+    position: relative; /* Keep relative for z-index */
+    z-index: 10; /* Ensure header is above other content */
+    max-width: 1300px; /* Increased max-width */
+    color: var(--text-color); /* Should inherit from body or be set if different */
 }
 .header-content {
-    max-width: 1300px; /* ADDED */
-    margin-left: auto; /* ADDED */
-    margin-right: auto; /* ADDED */
-    width: 100%; /* ADDED to fill parent's padding up to max-width */
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--global-spacing-unit); /* Use spacing unit */
-    /* padding for content is handled by parent .main-header's padding */
 }
 .logo-icon {
     font-size: 1.8rem; /* Slightly smaller logo icon */
@@ -821,36 +780,23 @@ body.animated-bg {
 }
 
 .main-footer {
-    /* margin: calc(var(--global-spacing-unit) * 1.5) auto 0 auto; */ /* Use spacing unit */ /* REMOVED for fixed positioning */
-    padding: calc(var(--global-spacing-unit) * 1.5) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */ /* KEPT for inner spacing */
-    /* border-radius: 16px 16px 0 0; */ /* Match header */ /* CHANGED */
-    border-radius: 0; /* ADJUSTED for fixed footer */
-    /* margin-top: auto; */ /* REMOVED */
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08); /* Softer shadow */ /* KEPT */
-    background: var(--glass-bg); /* KEPT */
-    /* max-width: 1300px; */ /* Increased max-width */ /* REMOVED for fixed positioning */
-    /* position: relative; */ /* CHANGED */
-    position: fixed; /* ADDED */
-    bottom: 0; /* ADDED */
-    left: 0; /* ADDED */
-    right: 0; /* ADDED */
-    width: 100%; /* ADDED */
-    max-width: none; /* ADDED to override previous max-width */
-    margin: 0; /* ADDED to override previous margin */
-    z-index: 10; /* Ensure footer is above other content */ /* KEPT */
-    color: var(--text-color); /* Should inherit */ /* KEPT */
+    margin: calc(var(--global-spacing-unit) * 1.5) auto 0 auto; /* Use spacing unit */
+    padding: calc(var(--global-spacing-unit) * 1.5) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
+    border-radius: 16px 16px 0 0; /* Match header */
+    margin-top: auto;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    background: var(--glass-bg);
+    max-width: 1300px; /* Increased max-width */
+    position: relative;
+    z-index: 10; /* Ensure footer is above other content */
+    color: var(--text-color); /* Should inherit */
 }
 .footer-content {
-    max-width: 1300px; /* ADDED */
-    margin-left: auto; /* ADDED */
-    margin-right: auto; /* ADDED */
-    width: 100%; /* ADDED to fill parent's padding up to max-width */
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
     gap: var(--global-spacing-unit); /* Use spacing unit */
-    /* padding for content is handled by parent .main-footer's padding */
 }
 .footer-logo {
     font-size: 1.3rem; /* Slightly smaller footer logo */
