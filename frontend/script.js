@@ -422,6 +422,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     detectionResult.textContent = data.message || 'Analysis complete. No specific message.';
                     detectionResult.style.display = 'block';
 
+                    // Add the toast notification here:
+                    const toastMessage = data.message || data.prediction_label || 'Analysis complete!';
+                    showToast(toastMessage, 'success'); // Display success toast
+
                     // Save to history
                     if (file && previewImage && (data.message || data.prediction_label)) {
                         const historyEntry = {
