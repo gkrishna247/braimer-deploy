@@ -5,11 +5,8 @@ function $(id) {
     return document.getElementById(id);
 }
 
-// Configuration (Consider moving to a separate config file or environment variables for production)
-const CONFIG = {
-    API_BASE_URL: 'http://127.0.0.1:5000/' // Use '' for relative paths (same origin), or e.g., 'https://your-api-domain.com'
-};
-const API_BASE_URL = CONFIG.API_BASE_URL;
+// Configuration
+const API_BASE_URL = 'http://127.0.0.1:5000/'; // Use '' for relative paths (same origin), or e.g., 'https://your-api-domain.com'
 
 // Toast Notification System
 function showToast(message, type = 'info') {
@@ -180,8 +177,103 @@ document.addEventListener('DOMContentLoaded', function() {
         const previewImage = $('previewImage');
         const loadingMessage = $('loadingMessage');
         const detectionResult = $('detectionResult');
-        const historyList = $('historyList');
+        const historyList = $('historyList'); // Existing element
         const uploadErrorMessage = $('upload-error-message');
+        const clearHistoryBtn = $('clearHistoryBtn'); // New button
+
+        // --- Analysis History Functions ---
+        const MAX_HISTORY_ENTRIES = 20;
+        const HISTORY_STORAGE_KEY = 'analysisHistory';
+
+        function loadHistory() {
+            if (!historyList) {
+                console.warn('History list element not found.');
+                return;
+            }
+            historyList.innerHTML = ''; // Clear existing items
+
+            try {
+                const history = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+                if (history.length === 0) {
+                    const li = document.createElement('li');
+                    li.textContent = 'No analysis history yet.';
+                    historyList.appendChild(li);
+                    return;
+                }
+
+                history.forEach(entry => {
+                    const li = document.createElement('li');
+                    li.classList.add('history-item'); // For styling
+
+                    const timestampSpan = document.createElement('span');
+                    timestampSpan.classList.add('history-timestamp');
+                    timestampSpan.textContent = entry.timestamp;
+
+                    const nameSpan = document.createElement('span');
+                    nameSpan.classList.add('history-name');
+                    nameSpan.textContent = `Image: ${entry.imageName}`;
+
+                    const resultSpan = document.createElement('span');
+                    resultSpan.classList.add('history-result');
+                    resultSpan.textContent = `Result: ${entry.resultLabel}`;
+
+                    const previewImg = document.createElement('img');
+                    previewImg.classList.add('history-preview');
+                    previewImg.src = entry.previewSrc;
+                    previewImg.alt = `Preview of ${entry.imageName}`;
+                    previewImg.style.width = '50px'; // Keep small
+                    previewImg.style.height = '50px';
+                    previewImg.style.objectFit = 'cover';
+                    previewImg.style.marginRight = '10px';
+
+
+                    li.appendChild(previewImg);
+                    li.appendChild(timestampSpan);
+                    li.appendChild(nameSpan);
+                    li.appendChild(resultSpan);
+                    historyList.appendChild(li);
+                });
+            } catch (e) {
+                console.error('Error loading or parsing history from localStorage:', e);
+                showToast('Could not load analysis history.', 'error');
+                const li = document.createElement('li');
+                li.textContent = 'Error loading history.';
+                historyList.appendChild(li);
+            }
+        }
+
+        function saveHistoryEntry(entry) {
+            if (!previewImage) { // Check if previewImage is available for src
+                console.warn("Preview image element not found, cannot save previewSrc for history.");
+                // return; // Optionally skip saving if preview is critical
+            }
+            try {
+                let history = JSON.parse(localStorage.getItem(HISTORY_STORAGE_KEY)) || [];
+                history.unshift(entry); // Add to the beginning
+                if (history.length > MAX_HISTORY_ENTRIES) {
+                    history = history.slice(0, MAX_HISTORY_ENTRIES); // Keep only the latest 20
+                }
+                localStorage.setItem(HISTORY_STORAGE_KEY, JSON.stringify(history));
+            } catch (e) {
+                console.error('Error saving history to localStorage:', e);
+                showToast('Could not save analysis to history.', 'error');
+            }
+        }
+
+        if (clearHistoryBtn) {
+            clearHistoryBtn.addEventListener('click', () => {
+                try {
+                    localStorage.removeItem(HISTORY_STORAGE_KEY);
+                    loadHistory(); // Refresh the list (will show "No history")
+                    showToast('Analysis history cleared.', 'success');
+                } catch (e) {
+                    console.error('Error clearing history from localStorage:', e);
+                    showToast('Could not clear analysis history.', 'error');
+                }
+            });
+        }
+        // --- End Analysis History Functions ---
+
 
         function clearUploadState() {
             if (previewImage) {
@@ -236,13 +328,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     processImage(file); // Call existing analysis function
                 };
                 reader.onerror = function() {
-                    console.error("FileReader error.");
+                    // console.error("FileReader error."); // Keep for debugging if needed
                     const errorMsg = "Error reading file. Please try again.";
-                    if (uploadErrorMessage) {
+                    showToast(errorMsg, 'error'); // Use showToast for user feedback
+                    if (uploadErrorMessage) { // Still update specific error UI if available
                         uploadErrorMessage.textContent = errorMsg;
                         uploadErrorMessage.style.display = 'block';
-                    } else {
-                        showToast(errorMsg, 'error');
                     }
                     if (loadingMessage) loadingMessage.style.display = 'none';
                 };
@@ -331,12 +422,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     detectionResult.textContent = data.message || 'Analysis complete. No specific message.';
                     detectionResult.style.display = 'block';
 
-                    if (historyList && (data.message || data.prediction_label)) {
-                        const li = document.createElement('li');
-                        // Displaying the prediction label in history might be more concise
-                        const resultText = data.prediction_label || data.message;
-                        li.textContent = `${new Date().toLocaleString()}: ${resultText}`;
-                        historyList.prepend(li); // Add to the top of the list
+                    // Save to history
+                    if (file && previewImage && (data.message || data.prediction_label)) {
+                        const historyEntry = {
+                            timestamp: new Date().toLocaleString(),
+                            imageName: file.name,
+                            previewSrc: previewImage.src, // Already a data URL from FileReader
+                            resultLabel: data.prediction_label || data.message
+                        };
+                        saveHistoryEntry(historyEntry);
+                        loadHistory(); // Refresh the displayed history list
+                    } else {
+                        // Fallback if some info is missing, or just call loadHistory to ensure UI consistency
+                        loadHistory();
                     }
                 })
                 .catch(error => {
@@ -351,50 +449,55 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
         } else {
-            console.warn('One or more dashboard elements (imageUpload, previewImage, loadingMessage, detectionResult) not found.');
+            console.warn('One or more dashboard elements (imageUpload, previewImage, loadingMessage, detectionResult) not found for processImage.');
         }
+        // Initial load of history for dashboard page
+        loadHistory();
     }
 
-    // Contact form validation
-    const contactForm = document.querySelector('form[aria-label="Contact form"]');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = $('name')?.value.trim();
-            const emailInput = $('email'); // Assuming 'email' is the ID for the contact form email
-            const email = emailInput?.value.trim();
-            const message = $('message')?.value.trim();
+    // Initialize Contact Form Logic
+    function initContactForm() {
+        const contactForm = document.querySelector('form[aria-label="Contact form"]');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = $('name')?.value.trim();
+                const emailInput = $('email'); // Assuming 'email' is the ID for the contact form email
+                const email = emailInput?.value.trim();
+                const message = $('message')?.value.trim();
 
-            let isValid = true;
-            let missingFields = [];
+                let isValid = true;
+                let missingFields = [];
 
-            if (!name) {
-                missingFields.push('Name');
-                isValid = false;
-            }
-            if (!email) {
-                missingFields.push('Email');
-                isValid = false;
-            } else {
-                // Basic email format validation
-                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailPattern.test(email)) {
-                    showToast('Please enter a valid email address.', 'error');
-                    emailInput?.focus(); // Focus on the email field
+                if (!name) {
+                    missingFields.push('Name');
+                    isValid = false;
+                }
+                if (!email) {
+                    missingFields.push('Email');
+                    isValid = false;
+                } else {
+                    // Basic email format validation
+                    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailPattern.test(email)) {
+                        showToast('Please enter a valid email address.', 'error');
+                        emailInput?.focus(); // Focus on the email field
+                        return;
+                    }
+                }
+                if (!message) {
+                    missingFields.push('Message');
+                    isValid = false;
+                }
+
+                if (!isValid) {
+                    showToast(`Please fill out all required fields: ${missingFields.join(', ')}.`, 'error');
                     return;
                 }
-            }
-            if (!message) {
-                missingFields.push('Message');
-                isValid = false;
-            }
-
-            if (!isValid) {
-                showToast(`Please fill out all required fields: ${missingFields.join(', ')}.`, 'error');
-                return;
-            }
-            showToast('Thank you for your message! (This is a demo, form data is not sent).', 'success');
-            contactForm.reset();
-        });
+                showToast('Thank you for your message! (This is a demo, form data is not sent).', 'success');
+                contactForm.reset();
+            });
+        }
     }
+    initContactForm(); // Call the function to set up the contact form
 });

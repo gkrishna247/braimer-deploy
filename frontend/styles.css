@@ -1067,3 +1067,195 @@ body.animated-bg {
 .activity-log li:last-child {
     border-bottom: none;
 }
+
+/* Dashboard Analysis History List Styles */
+.history {
+    margin-top: calc(var(--global-spacing-unit) * 2);
+}
+
+.history h2 {
+    margin-bottom: calc(var(--global-spacing-unit) * 1);
+    color: var(--secondary-color); /* Consistent heading color */
+}
+
+.history ul#historyList {
+    list-style: none;
+    padding: 0;
+    max-height: 400px; /* Limit height and make scrollable */
+    overflow-y: auto;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    padding: var(--global-spacing-unit);
+    background-color: rgba(var(--card-bg-dark-rgb, 20, 30, 40), 0.5); /* Use RGB version of card-bg-dark if available for opacity */
+}
+
+:root.light-theme .history ul#historyList {
+    background-color: rgba(var(--card-bg-light-rgb, 255, 255, 255), 0.7); /* Use RGB version of card-bg-light */
+    border-color: var(--glass-border-light);
+}
+
+
+.history li.history-item {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically align items */
+    padding: calc(var(--global-spacing-unit) * 0.75);
+    margin-bottom: calc(var(--global-spacing-unit) * 0.75);
+    background-color: var(--card-bg); /* Use card background for items */
+    border: 1px solid var(--glass-border);
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: background-color 0.3s;
+}
+
+.history li.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history li.history-item:hover {
+    background-color: var(--hover-color); /* Use hover color from theme */
+}
+
+.history li.history-item span {
+    display: block; /* Make spans take full width or use flex properties */
+    margin-right: var(--global-spacing-unit); /* Spacing between elements */
+    color: var(--text-color);
+}
+.history li.history-item span:last-child {
+    margin-right: 0;
+}
+
+
+.history .history-preview { /* Already styled in JS, but can be centralized here */
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: var(--global-spacing-unit);
+    border: 1px solid var(--glass-border);
+}
+
+.history .history-timestamp {
+    font-size: 0.85rem;
+    color: var(--text-color-muted);
+    min-width: 140px; /* Give timestamp some space */
+}
+
+.history .history-name {
+    font-weight: 500; /* Medium weight for name */
+    flex-grow: 1; /* Allow name to take available space */
+    word-break: break-word; /* Prevent long names from breaking layout */
+}
+
+.history .history-result {
+    font-style: italic;
+    color: var(--secondary-color); /* Highlight result */
+    min-width: 150px; /* Give result some space */
+    text-align: right;
+}
+
+/* Style for "No history yet" or "Error loading history" messages */
+.history ul#historyList li:only-child {
+    text-align: center;
+    color: var(--text-color-muted);
+    padding: var(--global-spacing-unit) * 2;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.clear-history-btn { /* Style for the clear history button */
+    background-color: var(--accent-color-dark); /* A less prominent color, or a "destructive action" color */
+    color: var(--text-color-dark);
+    padding: 0.6rem 1rem; /* Smaller padding */
+    font-size: 0.9rem;
+    margin-bottom: var(--global-spacing-unit); /* Space below button */
+}
+
+:root.light-theme .clear-history-btn {
+    background-color: var(--accent-color-light);
+    color: var(--text-color-light);
+}
+
+.clear-history-btn:hover {
+    background-color: #ff6f61; /* A common 'delete' or 'warning' color on hover */
+    color: #fff;
+}
+
+/* Contact Page Specific Styles */
+.contact-section {
+    display: flex; /* Enable flexbox */
+    flex-wrap: wrap; /* Allow items to wrap */
+    gap: calc(var(--global-spacing-unit) * 2); /* Space between form and info */
+}
+
+.contact-section form {
+    flex: 2; /* Form takes more space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+.contact-section .contact-info {
+    flex: 1; /* Info section takes less space */
+    min-width: 250px; /* Minimum width */
+    background-color: var(--card-bg); /* Optional: give it a slightly different bg */
+    padding: var(--global-spacing-unit);
+    border-radius: 8px;
+}
+
+.contact-info .contact-image {
+    width: 100%; /* Make image responsive */
+    max-width: 350px; /* Optional: prevent it from becoming too large on wider screens if flex item grows */
+    height: auto;    /* Maintain aspect ratio */
+    margin-top: 1rem; /* Add some space above it */
+    border-radius: 6px; /* Consistent rounding */
+    display: block; /* Ensure it behaves as a block for margin auto if needed */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Ensure labels in contact form have some space, and inputs are full width */
+.contact-section form label {
+    margin-bottom: calc(var(--global-spacing-unit) * 0.25); /* Space below label */
+    font-weight: 500;
+}
+.contact-section form input,
+.contact-section form textarea {
+    width: 100%; /* Explicitly full width for contact form inputs */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+
+@media (max-width: 768px) { /* Tablet and below for contact section */
+    .contact-section {
+        flex-direction: column; /* Stack form and info */
+    }
+    .contact-section form,
+    .contact-section .contact-info {
+        flex: none; /* Reset flex factor */
+        width: 100%; /* Full width when stacked */
+    }
+}
+
+/* Dashboard history item refinement for small screens */
+@media (max-width: 480px) { /* Adjusted breakpoint slightly */
+    .history li.history-item {
+        flex-direction: column;
+        align-items: flex-start; /* Align items to the start */
+        gap: calc(var(--global-spacing-unit) * 0.5); /* Add gap for stacked items */
+    }
+    .history .history-preview {
+        margin-bottom: 0.5rem; /* Space if stacking */
+        margin-right: 0; /* Remove right margin when stacked */
+    }
+    .history .history-timestamp,
+    .history .history-name,
+    .history .history-result {
+        min-width: 0; /* Reset min-width */
+        width: 100%; /* Take full width */
+        text-align: left; /* Align left if stacked */
+    }
+    .history .history-result {
+        margin-top: 0.5rem; /* Space above result when stacked */
+    }
+    .history li.history-item span { /* Adjust span behavior when stacked */
+        margin-right: 0;
+    }
+}
