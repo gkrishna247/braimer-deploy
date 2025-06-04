@@ -14,15 +14,15 @@
     --hover-color-dark: #106096; /* Slightly Lighter Blue for Hover */
 
     /* Light Theme */
-    --primary-color-light: #FFFFFF; /* Retaining white for primary content areas on the background */
-    --secondary-color-light: #5A7A9E; /* Muted blue for text/accents */
-    --accent-color-light: #7FA99B; /* Muted sage green/desaturated teal for accents */
-    --background-color-light: #EAEAEA; /* Dull off-white for page background */
-    --text-color-light: #1A202C; /* Retaining dark text for contrast, will review */
-    --card-bg-light: rgba(245, 245, 245, 0.85); /* Based on a lighter off-white, slightly more opaque */
-    --glass-bg-light: rgba(230, 230, 230, 0.65); /* Dull, slightly darker glass */
-    --glass-border-light: rgba(90, 122, 158, 0.25); /* Border based on new muted blue */
-    --hover-color-light: #D8D8D8; /* Slightly darker shade of the new background for hover */
+    --primary-color-light: #FFFFFF; /* White Background */
+    --secondary-color-light: #0A4A7A; /* Deep Blue Text/Accents */
+    --accent-color-light: #20C997; /* Teal Accents */
+    --background-color-light: #F0F4F8; /* Light Gray Background */
+    --text-color-light: #1A202C; /* Dark Text for Light BG */
+    --card-bg-light: rgba(255, 255, 255, 0.9); /* Light, Slightly Transparent Card */
+    --glass-bg-light: rgba(255, 255, 255, 0.7); /* Lighter Glass */
+    --glass-border-light: rgba(10, 74, 122, 0.3); /* Blue Border for Glass */
+    --hover-color-light: #E2E8F0; /* Light Gray for Hover */
 
     /* Global */
     --font-family: 'Poppins', Arial, sans-serif;
@@ -156,7 +156,7 @@ main {
     /* Previous max-width: 1300px; */
     /* Previous margin: 0 auto; */
 
-    padding: 4rem calc(var(--global-spacing-unit) * 2) 4rem; /* top/bottom adjusted, L/R kept */
+    padding: 5rem calc(var(--global-spacing-unit) * 2) 5rem; /* top/bottom adjusted, L/R kept */
     margin: 0; /* REMOVED auto margin */
     max-width: none; /* REMOVED max-width from main */
 
@@ -205,7 +205,7 @@ footer {
     main {
         /* padding: calc(var(--global-spacing-unit) * 1.5); */ /* Adjusted mobile padding - REPLACED BELOW */
         padding-top: 8rem;    /* Adjusted for taller mobile header */
-        padding-bottom: 5rem; /* Adjusted for taller mobile footer */
+        padding-bottom: 6rem; /* Adjusted for taller mobile footer */
         padding-left: calc(var(--global-spacing-unit) * 1.5);  /* Retain from original media query */
         padding-right: calc(var(--global-spacing-unit) * 1.5); /* Retain from original media query */
     }
@@ -345,13 +345,8 @@ footer {
     }
 
     /* General Card Padding */
-    .card { /* Reduce padding and margin for card on very small screens */
+    .glass-card, .card { /* Reduce padding for all cards on very small screens */
         padding: var(--global-spacing-unit);
-        margin: 0 0 calc(var(--global-spacing-unit) * 0.75) 0; /* 0.75rem bottom margin */
-    }
-    .glass-card { /* Reduce padding and margin for glass-card on very small screens */
-        padding: var(--global-spacing-unit);
-        margin: 0 0 var(--global-spacing-unit) 0; /* 1rem bottom margin */
     }
 }
 
@@ -411,7 +406,7 @@ button:active, .cta-button:active {
     border-radius: 12px; /* Slightly more rounded */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
     padding: calc(var(--global-spacing-unit) * 1.5); /* Use spacing unit */
-    margin: 0 0 calc(var(--global-spacing-unit) * 1.5) 0; /* Use spacing unit */
+    margin: calc(var(--global-spacing-unit) * 1.5) 0; /* Use spacing unit */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     color: var(--text-color);
 }
@@ -430,7 +425,7 @@ button:active, .cta-button:active {
     border-radius: 20px; /* Keep rounded */
     border: 1px solid var(--glass-border);
     padding: calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
-    margin: 0 0 calc(var(--global-spacing-unit) * 2) 0; /* Use spacing unit */
+    margin: calc(var(--global-spacing-unit) * 2) 0; /* Use spacing unit */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -735,12 +730,9 @@ body.animated-bg {
         flex-direction: column;
         gap: var(--global-spacing-unit);
     }
-    .card {
-        margin: 0 0 var(--global-spacing-unit) 0; /* 1rem bottom margin */
-    }
     .glass-card { /* This rule for glass-card padding is also fine for 768px */
         padding: calc(var(--global-spacing-unit) * 1.5);
-        margin: 0 0 calc(var(--global-spacing-unit) * 1.5) 0; /* 1.5rem bottom margin */
+        margin: var(--global-spacing-unit) 0;
     }
     /* The main header/footer flex-direction changes are moved into the new 768px block above for consolidation */
 }
@@ -867,7 +859,7 @@ body.animated-bg {
 }
 .footer-nav {
     display: flex;
-    gap: calc(var(--global-spacing-unit) * 0.5); /* Use spacing unit */
+    gap: calc(var(--global-spacing-unit) * 0.75); /* Use spacing unit */
 }
 .footer-nav a {
     color: var(--text-color);
