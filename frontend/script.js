@@ -6,7 +6,7 @@ function $(id) {
 }
 
 // Configuration
-const API_BASE_URL = 'http://127.0.0.1:5000/'; // Use '' for relative paths (same origin), or e.g., 'https://your-api-domain.com'
+const API_BASE_URL = ''; // Use '' for relative paths (same origin), or e.g., 'https://your-api-domain.com'
 
 // Toast Notification System
 function showToast(message, type = 'info') {

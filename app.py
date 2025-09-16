@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from PIL import Image
 import numpy as np
@@ -8,7 +8,7 @@ import cv2 # For OpenCV operations
 import tensorflow as tf # For loading and using the Keras model
 import random # Add this import
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='frontend')
 CORS(app)
 
 # --- Model Loading ---
@@ -33,10 +33,13 @@ users = {
     "test@example.com": {"password": "password", "name": "Test User"}
 }
 
-@app.route('/', methods=['GET'])
-def homepage():
-    """Simple homepage to test server connection."""
-    return '<h2>Braimer Deploy Server is running.</h2>', 200
+@app.route('/')
+def serve_index():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    return send_from_directory(app.static_folder, path)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -123,4 +126,4 @@ def analyze_image_endpoint(): # Renamed to avoid conflict with PIL.Image
 if __name__ == '__main__':
     # Make sure 'effnet.h5' is in the same directory as this script,
     # or update MODEL_LOAD_PATH.
-    app.run(debug=True, host='0.0.0.0', port=5000, use_reloader=False) # use_reloader=False is good when loading models once
+    app.run(debug=True, host='0.0.0.0', port=5002)
