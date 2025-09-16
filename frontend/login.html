@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#161625">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,9 +37,10 @@
                     <label for="login-email">Email</label>
                     <input type="email" id="login-email" name="login-email" required autocomplete="username">
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="position: relative;">
                     <label for="login-password">Password</label>
                     <input type="password" id="login-password" name="login-password" required autocomplete="current-password">
+                    <span class="password-toggle-icon" onclick="togglePasswordVisibility('login-password')">👁️</span>
                 </div>
                 <button type="submit" class="cta-button" style="width:100%;">Login</button>
             </form>

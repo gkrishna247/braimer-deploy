@@ -452,6 +452,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.warn('One or more dashboard elements (imageUpload, previewImage, loadingMessage, detectionResult) not found for processImage.');
         }
         // Initial load of history for dashboard page
+        // If the page load was a browser refresh, clear the analysis history first
+        try {
+            const navEntries = (performance.getEntriesByType && performance.getEntriesByType('navigation')) || [];
+            const isReload = (navEntries[0] && navEntries[0].type === 'reload')
+                || (performance.navigation && performance.navigation.type === 1); // deprecated fallback
+            if (isReload) {
+                localStorage.removeItem(HISTORY_STORAGE_KEY);
+            }
+        } catch (e) {
+            console.warn('Could not determine navigation type for history reset:', e);
+        }
         loadHistory();
     }
 
@@ -500,4 +511,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     initContactForm(); // Call the function to set up the contact form
+
+    // Toggle Password Visibility Function
+    window.togglePasswordVisibility = function(inputId) {
+        const passwordInput = $(inputId);
+        const icon = passwordInput.nextElementSibling;
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.textContent = '🙈';
+        } else {
+            passwordInput.type = 'password';
+            icon.textContent = '👁️';
+        }
+    }
 });

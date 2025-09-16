@@ -3,26 +3,26 @@
 /* Modern Color Scheme */
 :root {
     /* Dark Theme */
-    --primary-color-dark: #0A4A7A; /* Deep Blue */
-    --secondary-color-dark: #20C997; /* Teal */
-    --accent-color-dark: #A8B2C2; /* Light Blue-Gray */
-    --background-color-dark: #12181F; /* Darker Background */
-    --text-color-dark: #E0E6ED; /* Light Text for Dark BG */
-    --card-bg-dark: rgba(20, 30, 40, 0.75); /* Darker, Less Transparent Card */
-    --glass-bg-dark: rgba(20, 30, 40, 0.6); /* Darker Glass */
-    --glass-border-dark: rgba(32, 201, 151, 0.25); /* Teal Border for Glass */
-    --hover-color-dark: #106096; /* Slightly Lighter Blue for Hover */
+    --primary-color-dark: #1A1A2E; /* Deep, dark blue */
+    --secondary-color-dark: #E94560; /* Vibrant pink/red */
+    --accent-color-dark: #00F5D4; /* Bright turquoise/cyan */
+    --background-color-dark: #161625; /* Slightly lighter dark blue */
+    --text-color-dark: #EAEAEA; /* Soft white */
+    --card-bg-dark: rgba(26, 26, 46, 0.8);
+    --glass-bg-dark: rgba(26, 26, 46, 0.6);
+    --glass-border-dark: rgba(0, 245, 212, 0.2);
+    --hover-color-dark: #F87272; /* Lighter pink for hover */
 
     /* Light Theme */
-    --primary-color-light: #FFFFFF; /* White Background */
-    --secondary-color-light: #0A4A7A; /* Deep Blue Text/Accents */
-    --accent-color-light: #20C997; /* Teal Accents */
-    --background-color-light: #F0F4F8; /* Light Gray Background */
-    --text-color-light: #1A202C; /* Dark Text for Light BG */
-    --card-bg-light: rgba(255, 255, 255, 0.9); /* Light, Slightly Transparent Card */
-    --glass-bg-light: rgba(255, 255, 255, 0.7); /* Lighter Glass */
-    --glass-border-light: rgba(10, 74, 122, 0.3); /* Blue Border for Glass */
-    --hover-color-light: #E2E8F0; /* Light Gray for Hover */
+    --primary-color-light: #FFFFFF;
+    --secondary-color-light: #E94560; /* Vibrant pink/red (from dark theme) */
+    --accent-color-light: #4A90E2; /* Friendly blue */
+    --background-color-light: #F0F2F5; /* Cool light gray */
+    --text-color-light: #333333; /* Dark gray for text */
+    --card-bg-light: rgba(255, 255, 255, 0.9);
+    --glass-bg-light: rgba(240, 242, 245, 0.75);
+    --glass-border-light: rgba(74, 144, 226, 0.3);
+    --hover-color-light: #F87272; /* Lighter pink for hover */
 
     /* Global */
     --font-family: 'Poppins', Arial, sans-serif;
@@ -72,8 +72,8 @@ body {
     animation: fadeInPage 0.8s ease-out forwards;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    overflow-x: hidden;
+    height: 100vh;
+    overflow: hidden;
 }
 
 @keyframes fadeInPage {
@@ -151,9 +151,19 @@ nav a:hover { /* This might be for old nav structure, review if needed */
 }
 
 main {
-    padding: calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
-    max-width: 1300px; /* Increased max-width */
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: calc(var(--global-spacing-unit) * 2);
+    max-width: 1300px;
     margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+main::-webkit-scrollbar {
+    display: none;
 }
 
 footer {
@@ -710,15 +720,16 @@ body.animated-bg {
 
 /* Advanced Header and Footer Styles */
 .main-header {
-    margin: calc(var(--global-spacing-unit) * 1.5) auto; /* Use spacing unit */
-    padding: var(--global-spacing-unit) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
-    border-radius: 16px; /* Slightly less rounded */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    margin: 0 auto;
+    padding: calc(var(--global-spacing-unit) * 0.75) calc(var(--global-spacing-unit) * 2);
     background: var(--glass-bg);
-    position: relative; /* Keep relative for z-index */
-    z-index: 10; /* Ensure header is above other content */
-    max-width: 1300px; /* Increased max-width */
-    color: var(--text-color); /* Should inherit from body or be set if different */
+    position: relative;
+    z-index: 10;
+    max-width: 1300px;
+    color: var(--text-color);
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 .header-content {
     display: flex;
@@ -780,16 +791,16 @@ body.animated-bg {
 }
 
 .main-footer {
-    margin: calc(var(--global-spacing-unit) * 1.5) auto 0 auto; /* Use spacing unit */
-    padding: calc(var(--global-spacing-unit) * 1.5) calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
-    border-radius: 16px 16px 0 0; /* Match header */
-    margin-top: auto;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    margin: 0 auto;
+    padding: calc(var(--global-spacing-unit) * 0.75) calc(var(--global-spacing-unit) * 2);
     background: var(--glass-bg);
-    max-width: 1300px; /* Increased max-width */
+    max-width: 1300px;
     position: relative;
-    z-index: 10; /* Ensure footer is above other content */
-    color: var(--text-color); /* Should inherit */
+    z-index: 10;
+    color: var(--text-color);
+    width: 100%;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 .footer-content {
     display: flex;
@@ -1258,4 +1269,14 @@ body.animated-bg {
     .history li.history-item span { /* Adjust span behavior when stacked */
         margin-right: 0;
     }
+}
+
+/* Password Toggle Icon */
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    user-select: none;
 }
