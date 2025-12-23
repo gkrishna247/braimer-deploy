@@ -36,8 +36,26 @@ function showToast(message, type = 'info') {
     }, 3000);
 }
 
+// Theme Management
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Update button icon if exists (though we handle this with toggle usually)
+}
+
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+}
+
 // Navigation Active State
 document.addEventListener('DOMContentLoaded', () => {
+    initTheme(); // Initialize theme
+
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const navLinks = document.querySelectorAll('.main-nav a');
 
@@ -54,6 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
         initDashboard();
     }
 });
+
+// Export Report Function
+function exportReport() {
+    // Add timestamp data attribute for CSS print content
+    const resultSection = document.getElementById('results-section');
+    if (resultSection) {
+        resultSection.setAttribute('data-timestamp', new Date().toLocaleString());
+        window.print();
+    } else {
+        showToast('No results to export', 'error');
+    }
+}
 
 function initDashboard() {
     const dropZone = $('image-drop-zone');

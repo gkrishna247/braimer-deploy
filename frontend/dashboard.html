@@ -16,6 +16,7 @@
                 <a href="index.html">Home</a>
                 <a href="dashboard.html" class="active">Dashboard</a>
                 <a href="profile.html">Profile</a>
+                <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">🌓</button>
             </nav>
         </div>
     </header>
@@ -71,6 +72,12 @@
                 <div style="background-color: rgba(32, 178, 170, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
                     <strong>Next Steps:</strong>
                     <p id="explanation-text" style="margin: 0.5rem 0 0 0;">Please review this result with a medical professional.</p>
+                </div>
+
+                <div style="margin-top: 1.5rem; text-align: right;">
+                    <button onclick="exportReport()" class="cta-button" style="background-color: var(--text-color-muted); font-size: 0.9rem;">
+                        📄 Export Report
+                    </button>
                 </div>
             </div>
         </div>

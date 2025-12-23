@@ -22,6 +22,21 @@
     --global-spacing-unit: 1rem;
 }
 
+/* Dark Theme Variables */
+[data-theme="dark"] {
+    --primary-color: #4A90E2; /* Lighter Blue for dark mode */
+    --secondary-color: #20B2AA; /* Keep Teal, it works well */
+    --accent-color: #66BB6A; /* Lighter Green */
+    --background-color: #121212; /* Very Dark Gray */
+    --text-color: #E0E0E0; /* Off-white */
+    --text-color-muted: #A0A0A0;
+    --card-bg: #1E1E1E; /* Dark Gray cards */
+    --glass-bg: rgba(30, 30, 30, 0.95);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --hover-color: #357ABD;
+    --error-color: #EF5350; /* Lighter Red */
+}
+
 /* General Styles */
 body {
     font-family: var(--font-family);
@@ -174,6 +189,14 @@ input, textarea, select {
     font-size: 1rem;
     transition: border-color 0.3s;
     box-sizing: border-box;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select {
+    border-color: #333;
 }
 
 input:focus, textarea:focus {
@@ -319,6 +342,10 @@ input:focus, textarea:focus {
     gap: 1rem;
 }
 
+[data-theme="dark"] .history-item {
+    border-bottom-color: #333;
+}
+
 .history-item:last-child {
     border-bottom: none;
 }
@@ -337,4 +364,83 @@ input:focus, textarea:focus {
 .history-status {
     font-weight: 600;
     color: var(--primary-color);
+}
+
+/* Print Styles for Report Export */
+@media print {
+    /* Hide non-printable elements */
+    .main-header, .main-footer,
+    #image-drop-zone, .theme-switch,
+    .main-nav, .cta-button,
+    #clearHistoryBtn, button,
+    .history-section-title, #historyList {
+        display: none !important;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    main {
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .glass-card {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Specifically target the result section */
+    #results-section {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
+    h1, h2, h3 {
+        color: black !important;
+    }
+
+    p, span, label, div {
+        color: black !important;
+    }
+
+    /* Ensure progress bar is visible (print browsers often strip backgrounds) */
+    .progress-container {
+        border: 1px solid #000;
+        background: #fff !important;
+    }
+    .progress-bar {
+        background-color: #000 !important; /* Force black for contrast or greyscale */
+        color: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Add a header for the report */
+    #results-section::before {
+        content: "Medical Analysis Report - BrainAI";
+        display: block;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #000;
+        padding-bottom: 10px;
+    }
+
+    #results-section::after {
+        content: "Generated on " attr(data-timestamp);
+        display: block;
+        font-size: 12px;
+        margin-top: 50px;
+        border-top: 1px solid #ccc;
+        padding-top: 10px;
+    }
 }
