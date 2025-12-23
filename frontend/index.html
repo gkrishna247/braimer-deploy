@@ -2,67 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#161625">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-Powered Brain Tumor Detection System for medical professionals.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Welcome</title>
+    <title>Brain Tumor Detection - Home</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="animated-bg">
-    <div class="bg-blob bg-blob1"></div>
-    <div class="bg-blob bg-blob2"></div>
-    <div class="bg-blob bg-blob3"></div>
-    <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌙/☀️</button>
-    <svg class="decorative-svg decorative-svg-home" viewBox="0 0 200 200" aria-hidden="true"><circle fill="#4CAF50" fill-opacity="0.15" cx="100" cy="100" r="100"/></svg>
-    <header class="main-header glass-card">
+<body>
+    <header class="main-header">
         <div class="header-content">
-            <h1><span class="logo-icon" aria-label="logo">🧠</span> Brain Tumor Detection System</h1>
-            <nav class="main-nav" aria-label="Main navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="login.html">Login</a>
+            <h1><span class="logo-icon">🧠</span> BrainAI</h1>
+            <nav class="main-nav">
+                <a href="index.html" class="active">Home</a>
+                <a href="dashboard.html">Dashboard</a>
+                <a href="profile.html">Profile</a>
             </nav>
         </div>
     </header>
+
     <main>
-        <div class="hero-section glass-card">
-            <h1>Welcome to Brain Tumor Detection System!</h1>
-            <p>Experience the future of medical diagnostics with our advanced AI-powered detection system.</p>
-            <a href="login.html" class="cta-button">Get Started</a>
-        </div>
-        <section class="features" id="features">
+        <section class="hero-section glass-card">
+            <h1>Advanced Brain Tumor Detection</h1>
+            <p>Empowering medical diagnostics with state-of-the-art Artificial Intelligence. Fast, accurate, and reliable analysis for better patient outcomes.</p>
+            <div style="margin-top: 2rem;">
+                <a href="dashboard.html" class="cta-button">Start Analysis</a>
+            </div>
+        </section>
+
+        <section class="features">
             <div class="feature glass-card">
-                <span class="feature-icon"><svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="30" r="28" fill="#4CAF50" fill-opacity="0.2"/><path d="M20 30l7 7 13-13" stroke="#4CAF50" stroke-width="3" fill="none"/></svg></span>
-                <h2>Accurate Detection</h2>
-                <p>Our system provides highly accurate results to assist medical professionals.</p>
+                <div class="feature-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#20B2AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                </div>
+                <h3>Rapid Processing</h3>
+                <p>Get analysis results in seconds, optimized for clinical workflows.</p>
             </div>
             <div class="feature glass-card">
-                <span class="feature-icon"><svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><rect x="10" y="10" width="40" height="40" rx="10" fill="#007BFF" fill-opacity="0.2"/><path d="M20 30h20M30 20v20" stroke="#007BFF" stroke-width="3" fill="none"/></svg></span>
-                <h2>Fast Processing</h2>
-                <p>Get results in seconds, saving valuable time in critical situations.</p>
+                <div class="feature-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#20B2AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <h3>High Accuracy</h3>
+                <p>Powered by EfficientNet for precision in tumor classification.</p>
             </div>
             <div class="feature glass-card">
-                <span class="feature-icon"><svg width="60" height="60" viewBox="0 0 60 60" aria-hidden="true"><ellipse cx="30" cy="30" rx="28" ry="18" fill="#ff6f61" fill-opacity="0.15"/><path d="M20 40c0-10 20-10 20 0" stroke="#ff6f61" stroke-width="3" fill="none"/></svg></span>
-                <h2>Easy to Use</h2>
-                <p>Designed with simplicity in mind for seamless user experience.</p>
+                <div class="feature-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#20B2AA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                </div>
+                <h3>Secure & Private</h3>
+                <p>Built with medical data privacy standards in mind.</p>
             </div>
         </section>
     </main>
-    <footer class="main-footer glass-card">
+
+    <footer class="main-footer">
         <div class="footer-content">
-            <span class="footer-logo" aria-label="logo">🧠</span>
-            <span>&copy; 2025 Brain Tumor Detection System. All rights reserved.</span>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="profile.html">Profile</a>
+            <p>&copy; 2025 BrainAI Medical Systems. All rights reserved.</p>
+            <nav>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Support</a>
             </nav>
         </div>
     </footer>

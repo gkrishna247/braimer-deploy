@@ -2,88 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#161625">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Profile - Brain Tumor Detection</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>User Profile - Brain Tumor Detection System</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="animated-bg">
-    <div class="bg-blob bg-blob1"></div>
-    <div class="bg-blob bg-blob2"></div>
-    <div class="bg-blob bg-blob3"></div>
-    <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌙/☀️</button>
-    <!-- Assuming a generic decorative SVG for profile or reusing one -->
-    <svg class="decorative-svg decorative-svg-dashboard" viewBox="0 0 180 180" aria-hidden="true"><circle fill="#20C997" fill-opacity="0.1" cx="90" cy="90" r="90"/></svg>
-
-    <header class="main-header glass-card">
+<body>
+    <header class="main-header">
         <div class="header-content">
-            <h1><span class="logo-icon" aria-label="logo">🧠</span> Brain Tumor Detection System</h1>
-            <nav class="main-nav" aria-label="Main navigation">
+            <h1><span class="logo-icon">🧠</span> BrainAI</h1>
+            <nav class="main-nav">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
+                <a href="dashboard.html">Dashboard</a>
                 <a href="profile.html" class="active">Profile</a>
-                <a href="login.html">Login</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <div class="profile-container glass-card scroll-animate">
-            <section class="profile-header section-fade-in-up">
-                <div class="avatar-placeholder">👤</div>
-                <div class="user-info">
-                    <h2>Test User</h2>
-                    <p>Email: test@example.com</p>
-                    <p>Full Name: Test Q. User</p>
-                </div>
-            </section>
+        <div class="glass-card" style="text-align: center;">
+            <div style="width: 100px; height: 100px; background-color: var(--secondary-color); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 3rem; margin: 0 auto 1.5rem auto;">
+                👤
+            </div>
+            <h2>Dr. Alex Smith</h2>
+            <p>Neurologist | ID: 89304</p>
+            <p>alex.smith@hospital.org</p>
+        </div>
 
-            <section class="profile-settings scroll-animate section-fade-in-up" style="animation-delay: 0.2s;">
-                <h3>Preferences</h3>
-                <div class="setting-item">
-                    <label for="theme-preference">Theme</label>
-                    <span id="theme-preference" class="control-placeholder">Dark Theme (Current)</span>
-                    <!-- In a real app, this would be a select or radio buttons -->
+        <div class="glass-card">
+            <h3>Account Settings</h3>
+            <form>
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" value="Alex Smith" disabled>
                 </div>
-                <div class="setting-item">
-                    <label for="email-notifications">Email Notifications</label>
-                    <span id="email-notifications" class="control-placeholder">Off</span>
-                    <!-- Placeholder for a toggle switch -->
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" value="alex.smith@hospital.org" disabled>
                 </div>
-                <div class="setting-item">
-                    <label>Account</label>
-                    <button class="cta-button" disabled style="background-color: var(--accent-color); cursor: not-allowed;">Change Password</button>
+                <div class="form-group">
+                    <label>Password</label>
+                    <button type="button" disabled>Change Password</button>
                 </div>
-            </section>
+            </form>
+        </div>
 
-            <section class="activity-log scroll-animate section-fade-in-up" style="animation-delay: 0.4s;">
-                <h3>Recent Activity</h3>
-                <ul>
-                    <li>Logged in - 2024-03-15 10:00 AM</li>
-                    <li>Analyzed image 'scan001.jpg' - 2024-03-14 02:30 PM</li>
-                    <li>Updated profile (mock) - 2024-03-14 09:15 AM</li>
-                </ul>
-            </section>
+        <div class="glass-card">
+            <h3>System Preferences</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid #eee;">
+                <span>Email Notifications</span>
+                <span style="color: var(--secondary-color); font-weight: 500;">Enabled</span>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem 0;">
+                <span>Data Sharing</span>
+                <span style="color: var(--text-color-muted);">Disabled</span>
+            </div>
         </div>
     </main>
 
-    <footer class="main-footer glass-card">
+    <footer class="main-footer">
         <div class="footer-content">
-            <span class="footer-logo" aria-label="logo">🧠</span>
-            <span>&copy; 2025 Brain Tumor Detection System. All rights reserved.</span>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="profile.html" class="active">Profile</a>
-            </nav>
+            <p>&copy; 2025 BrainAI Medical Systems. All rights reserved.</p>
         </div>
     </footer>
 </body>

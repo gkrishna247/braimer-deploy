@@ -1,62 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-/* Modern Color Scheme */
+/* Medical/Clean Color Scheme */
 :root {
-    /* Dark Theme */
-    --primary-color-dark: #1A1A2E; /* Deep, dark blue */
-    --secondary-color-dark: #E94560; /* Vibrant pink/red */
-    --accent-color-dark: #00F5D4; /* Bright turquoise/cyan */
-    --background-color-dark: #161625; /* Slightly lighter dark blue */
-    --text-color-dark: #EAEAEA; /* Soft white */
-    --card-bg-dark: rgba(26, 26, 46, 0.8);
-    --glass-bg-dark: rgba(26, 26, 46, 0.6);
-    --glass-border-dark: rgba(0, 245, 212, 0.2);
-    --hover-color-dark: #F87272; /* Lighter pink for hover */
+    /* Medical Theme (Default - Light) */
+    --primary-color: #006699; /* Professional Medical Blue */
+    --secondary-color: #20B2AA; /* Teal/Green (Healing/Calm) */
+    --accent-color: #4CAF50; /* Success/Safe Green */
+    --background-color: #F8F9FA; /* Very Light Gray/White */
+    --text-color: #333333; /* Dark Gray for readability */
+    --text-color-muted: #666666;
+    --card-bg: #FFFFFF; /* White cards */
+    --glass-bg: rgba(255, 255, 255, 0.95); /* High opacity glass */
+    --glass-border: rgba(0, 102, 153, 0.1);
+    --hover-color: #005580; /* Darker Blue */
+    --error-color: #E63946;
 
-    /* Light Theme */
-    --primary-color-light: #FFFFFF;
-    --secondary-color-light: #E94560; /* Vibrant pink/red (from dark theme) */
-    --accent-color-light: #4A90E2; /* Friendly blue */
-    --background-color-light: #F0F2F5; /* Cool light gray */
-    --text-color-light: #333333; /* Dark gray for text */
-    --card-bg-light: rgba(255, 255, 255, 0.9);
-    --glass-bg-light: rgba(240, 242, 245, 0.75);
-    --glass-border-light: rgba(74, 144, 226, 0.3);
-    --hover-color-light: #F87272; /* Lighter pink for hover */
-
-    /* Global */
+    /* Global Typography */
     --font-family: 'Poppins', Arial, sans-serif;
-    --line-height-base: 1.7;
-    --letter-spacing-heading: 0.05em;
-
-    /* Apply Dark Theme by Default */
-    --primary-color: var(--primary-color-dark);
-    --secondary-color: var(--secondary-color-dark);
-    --accent-color: var(--accent-color-dark);
-    --background-color: var(--background-color-dark);
-    --text-color: var(--text-color-dark);
-    --text-color-muted: #909db0; /* Muted text for placeholders, etc. */
-    --card-bg: var(--card-bg-dark);
-    --glass-bg: var(--glass-bg-dark);
-    --glass-border: var(--glass-border-dark);
-    --hover-color: var(--hover-color-dark);
-}
-
-:root.light-theme {
-    --primary-color: var(--primary-color-light);
-    --secondary-color: var(--secondary-color-light);
-    --accent-color: var(--accent-color-light);
-    --background-color: var(--background-color-light);
-    --text-color: var(--text-color-light);
-    --text-color-muted: #5a677a; /* Muted text for light theme */
-    --card-bg: var(--card-bg-light);
-    --glass-bg: var(--glass-bg-light);
-    --glass-border: var(--glass-border-light);
-    --hover-color: var(--hover-color-light);
-}
-
-body.theme-toggle {
-    transition: background-color 0.3s, color 0.3s;
+    --line-height-base: 1.6;
+    --letter-spacing-heading: 0.02em;
+    --global-spacing-unit: 1rem;
 }
 
 /* General Styles */
@@ -67,1216 +30,311 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: var(--line-height-base);
-    font-size: 16px; /* Base font size */
-    --global-spacing-unit: 1rem; /* Base unit for spacing */
-    animation: fadeInPage 0.8s ease-out forwards;
+    font-size: 16px;
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
-@keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Typography */
+h1, .h1 { font-size: 2.25rem; font-weight: 700; color: var(--primary-color); margin-bottom: 1rem; }
+h2, .h2 { font-size: 1.75rem; font-weight: 600; color: var(--primary-color); margin-bottom: 0.75rem; }
+h3, .h3 { font-size: 1.25rem; font-weight: 500; color: var(--secondary-color); margin-bottom: 0.5rem; }
+p { margin-bottom: 1rem; color: var(--text-color-muted); }
+a { color: var(--primary-color); text-decoration: none; transition: color 0.3s; }
+a:hover { color: var(--secondary-color); }
 
-/* Typographic Scale */
-h1, .h1 {
-    font-size: 2.5rem; /* Was 2rem or 2.5rem */
-    font-weight: 700;
-    letter-spacing: var(--letter-spacing-heading);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-}
-
-h2, .h2 {
-    font-size: 2rem; /* Was 1.5rem in media query */
-    font-weight: 600;
-    letter-spacing: var(--letter-spacing-heading);
-    margin-bottom: 0.75rem;
-    line-height: 1.3;
-}
-
-h3, .h3 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-p, .p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-}
-
-a, .a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover, .a:hover {
-    color: var(--accent-color);
-}
-
-
-header {
-    background-color: transparent; /* Make header transparent, rely on main-header */
-    color: var(--text-color);
-    padding: 0; /* Remove padding, handled by main-header */
-    text-align: center;
-    box-shadow: none; /* Remove shadow, handled by main-header */
-}
-
-header h1 { /* This might be for old header structure, review if needed */
-    margin: 0;
-    font-size: 2rem; /* Adjusted in h1 styles */
-}
-
-nav { /* This might be for old nav structure, review if needed */
-    margin: 1rem 0;
-}
-
-nav a { /* This might be for old nav structure, review if needed */
-    color: var(--text-color); /* Will be overridden by .main-nav a */
-    text-decoration: none;
-    margin: 0 1rem;
-    font-weight: bold; /* Adjusted in .main-nav a */
-    transition: color 0.3s;
-}
-
-nav a:hover { /* This might be for old nav structure, review if needed */
-    color: var(--secondary-color); /* Will be overridden by .main-nav a:hover */
-}
-
+/* Layout Structure */
 main {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: calc(var(--global-spacing-unit) * 2);
-    max-width: 1300px;
-    margin: 0 auto;
-    width: 100%;
-    box-sizing: border-box;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-}
-
-main::-webkit-scrollbar {
-    display: none;
-}
-
-footer {
-    background-color: transparent; /* Make footer transparent, rely on main-footer */
-    color: var(--text-color);
-    text-align: center;
-    padding: 0; /* Remove padding, handled by main-footer */
-    position: relative;
-    bottom: 0;
-    width: 100%;
-}
-
-/* Responsive Layout - Typographic Adjustments & More */
-@media (max-width: 768px) {
-    h1, .h1 {
-        font-size: 2rem; /* Base h1 for tablets/general small screens */
-    }
-    h2, .h2 {
-        font-size: 1.75rem; /* Base h2 for tablets */
-    }
-    h3, .h3 {
-        font-size: 1.375rem; /* Base h3 for tablets */
-    }
-    main {
-        padding: calc(var(--global-spacing-unit) * 1.5); /* Adjusted mobile padding */
-    }
-    nav a { /* Old nav, if any */
-        margin: 0 0.5rem;
-    }
-
-    /* Header and Nav */
-    .main-header .header-content {
-        flex-direction: column; /* Stack logo/title and nav */
-        align-items: center; /* Center items */
-        gap: var(--global-spacing-unit);
-    }
-    .main-nav {
-        width: 100%;
-        justify-content: center; /* Center nav items */
-        gap: var(--global-spacing-unit) * 0.5; /* Smaller gap for nav items */
-    }
-    .main-nav a {
-        padding: 0.7rem 1rem; /* Ensure good touch targets */
-    }
-
-    /* Features Section - 2 columns for tablets */
-    .features .feature {
-        flex-basis: calc(50% - (var(--global-spacing-unit) * 1.5)); /* 2 columns, accounting for gap */
-        min-width: 0; /* Reset min-width if previously set */
-    }
-
-    /* Footer */
-    .main-footer .footer-content {
-        flex-direction: column; /* Stack logo/text and nav */
-        align-items: center; /* Center items */
-        gap: var(--global-spacing-unit);
-    }
-    .footer-nav {
-        width: 100%;
-        justify-content: center; /* Center nav items */
-        gap: var(--global-spacing-unit) * 0.5;
-    }
-     .footer-nav a {
-        padding: 0.5rem 0.8rem; /* Ensure good touch targets */
-    }
-
-    /* Team section cards - already stack at 768px due to flex properties, this is fine */
-    /* Glass card padding already adjusted in this query */
-}
-
-/* Smaller Mobile Breakpoint */
-@media (max-width: 520px) {
-    .main-header .header-content h1 { /* Site title */
-        font-size: 1.5rem; /* Smaller site title */
-        text-align: center;
-    }
-     .main-header .header-content .logo-icon {
-        font-size: 1.6rem;
-        margin-right: 0.3rem;
-    }
-    .main-nav a {
-        padding: 0.6rem 0.8rem; /* Adjust padding for very small screens */
-        font-size: 0.9rem; /* Slightly smaller font for nav links */
-    }
-
-    .hero-section h1 {
-        font-size: 1.8rem; /* Adjust hero title */
-    }
-    .hero-section p {
-        font-size: 0.95rem; /* Adjust hero paragraph */
-    }
-    .hero-section .cta-button {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-    }
-
-    /* Features Section - 1 column for mobile */
-    .features .feature {
-        flex-basis: 100%; /* Single column */
-    }
-    .feature p { /* Feature card paragraph text */
-        font-size: 0.9rem;
-    }
-
-
-    /* Form Group - already handles stacking via flex-direction: column by default */
-    /* and min-width: 576px for row. This breakpoint is smaller than 576px, so stacking is active. */
-    /* We can ensure labels are fully on top if not already */
-    .form-group label {
-        min-width: auto; /* Reset min-width from wider screens */
-        text-align: left; /* Align label to the left */
-        margin-right: 0; /* Remove right margin */
-        margin-bottom: calc(var(--global-spacing-unit) * 0.3); /* Space between label and input */
-    }
-    .form-group input, .form-group textarea {
-        width: 100%; /* Ensure inputs take full width */
-    }
-
-
-    /* Profile Page */
-    .profile-settings .setting-item,
-    .team .card { /* If team card structure is similar or needs stacking */
-        flex-direction: column; /* Stack items in setting or team cards */
-        align-items: flex-start; /* Align items to the start */
-        gap: calc(var(--global-spacing-unit) * 0.5);
-    }
-    .profile-settings .setting-item .control-placeholder {
-        margin-top: calc(var(--global-spacing-unit) * 0.5);
-        text-align: left; /* Align placeholder text to left */
-        width: 100%; /* Allow placeholder to take full width if needed */
-    }
-    .profile-settings button[disabled] { /* Ensure button is full width or appropriately styled */
-        width: 100%;
-    }
-    .avatar-placeholder {
-        width: 100px;
-        height: 100px;
-        font-size: 3rem;
-    }
-    .user-info h2 {
-        font-size: 1.3rem;
-    }
-
-    /* Dashboard Page */
-    .image-upload-area {
-        padding: var(--global-spacing-unit);
-    }
-    .image-upload-area .upload-icon {
-        font-size: 2.5rem;
-    }
-    .image-upload-area p {
-        font-size: 0.9rem; /* Smaller text in drop zone */
-    }
-    .image-upload-area .browse-button {
-        padding: 0.5rem 1rem;
-        font-size: 0.85rem;
-    }
-    #dashboard h1 { /* Dashboard title */
-        font-size: 1.8rem;
-    }
-
-    /* General Card Padding */
-    .glass-card, .card { /* Reduce padding for all cards on very small screens */
-        padding: var(--global-spacing-unit);
-    }
-}
-
-/* Buttons */
-button, .cta-button {
-    background-color: var(--secondary-color);
-    color: var(--primary-color-light); /* Text color for buttons, assuming light text on dark/accent bg */
-    padding: 12px 24px; /* Increased padding */
-    border: none;
-    border-radius: 8px; /* Slightly more rounded */
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600; /* Poppins regular is 400, medium 500, semibold 600 */
-    letter-spacing: 0.025em; /* Adjusted letter spacing */
-    transition: background-color 0.3s, transform 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Softer shadow */
-    position: relative;
-    overflow: hidden;
-}
-
-/* Removing the old ::after shine effect for now, can be redesigned if needed */
-/*
-.cta-button::after, button::after {
-    content: '';
-    position: absolute;
-    left: -75%;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0));
-    transform: skewX(-20deg);
-    transition: left 0.5s;
-}
-
-.cta-button:hover::after, button:hover::after {
-    left: 120%;
-}
-*/
-
-button:hover, .cta-button:hover {
-    background-color: var(--hover-color); /* Use new hover variable */
-    color: var(--text-color-dark); /* Ensure text is readable on hover */
-    transform: translateY(-3px) scale(1.03); /* Enhanced lift and slight scale */
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12); /* More noticeable shadow */
-}
-
-button:active, .cta-button:active {
-    transform: translateY(-1px) scale(0.98); /* Press down effect with slight shrink */
-    box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Adjusted shadow for active state */
-    background-color: var(--secondary-color); /* Ensure it doesn't stay in hover-color */
-}
-
-
-/* Cards */
-.card {
-    background-color: var(--card-bg);
-    border-radius: 12px; /* Slightly more rounded */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Adjusted shadow */
-    padding: calc(var(--global-spacing-unit) * 1.5); /* Use spacing unit */
-    margin: calc(var(--global-spacing-unit) * 1.5) 0; /* Use spacing unit */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: var(--text-color);
-}
-
-.card:hover {
-    transform: translateY(-8px); /* Slightly less lift */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
-}
-
-/* Advanced Glassmorphism Card */
-.glass-card {
-    background: var(--glass-bg);
-    box-shadow: 0 8px 32px 0 var(--glass-border); /* Use variable for shadow color consistency */
-    backdrop-filter: blur(10px); /* Increased blur */
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 20px; /* Keep rounded */
-    border: 1px solid var(--glass-border);
-    padding: calc(var(--global-spacing-unit) * 2); /* Use spacing unit */
-    margin: calc(var(--global-spacing-unit) * 2) 0; /* Use spacing unit */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glass-card:hover {
-    transform: translateY(-8px) scale(1.01); /* Slightly less scale */
-    box-shadow: 0 12px 40px 0 var(--glass-border); /* Enhanced shadow on hover */
-}
-
-/* Forms */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem; /* Increased gap */
-}
-
-form input, form textarea { /* Combined input and textarea */
-    padding: 0.9rem 1rem; /* Adjusted padding */
-    border: 1px solid var(--glass-border); /* Use glass border for consistency */
-    border-radius: 8px; /* Consistent border-radius */
-    font-size: 1rem;
-    background-color: var(--glass-bg); /* Use glass bg for inputs */
-    color: var(--text-color);
-    font-family: var(--font-family); /* Ensure form elements use Poppins */
-}
-
-form input:focus, form textarea:focus {
-    outline: none;
-    border-color: var(--secondary-color); /* Accent color border */
-    box-shadow: 0 0 0 3px rgba(var(--rgb-secondary-color-dark), 0.3); /* Use RGB if secondary is hex, e.g., for #20C997 -> 32, 201, 151 */
-    /* Assuming --secondary-color-dark is #20C997, its RGB is 32, 201, 151 */
-    /* If you have --secondary-color-dark-rgb: 32, 201, 151; then use: */
-    /* box-shadow: 0 0 0 3px rgba(var(--secondary-color-dark-rgb), 0.3); */
-    /* For now, I'll use a placeholder if direct RGB from hex is not possible in pure CSS vars for rgba() alpha */
-    /* Let's use a slightly desaturated version of secondary or a fixed color for simplicity if above is an issue */
-    box-shadow: 0 0 8px rgba(32, 201, 151, 0.3); /* Teal glow */
-}
-
-form button { /* Style form buttons like other buttons */
-    background-color: var(--secondary-color);
-    color: var(--primary-color-light);
-    font-weight: 600;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-form button:hover {
-    background-color: var(--hover-color);
-    color: var(--text-color-dark);
-    transform: translateY(-2px);
-}
-
-/* Align form-group label and input horizontally */
-.form-group {
-    display: flex;
-    flex-direction: column; /* Stack label and input on small screens */
-    align-items: flex-start; /* Align items to the start */
-    gap: calc(var(--global-spacing-unit) * 0.5); /* Use spacing unit */
-}
-
-.form-group label {
-    /* min-width: 100px; */ /* Remove fixed width */
-    text-align: left; /* Align text to left */
-    /* margin-right: 10px; */ /* Remove margin */
-    font-weight: 500;
-}
-
-.form-group input {
     flex: 1;
-    width: 100%; /* Make input take full width */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-}
-
-@media (min-width: 576px) { /* Apply horizontal layout for larger screens */
-    .form-group {
-        flex-direction: row;
-        align-items: center;
-        gap: var(--global-spacing-unit); /* Use spacing unit */
-    }
-
-    .form-group label {
-        min-width: 120px; /* Adjust as needed */
-        text-align: right;
-        margin-right: 0; /* Remove as gap property is used */
-    }
-
-    .form-group input {
-        width: auto; /* Reset width to allow flex to work */
-    }
-}
-
-
-/* Hero Section */
-.hero-section {
-    text-align: center;
-    padding: calc(var(--global-spacing-unit) * 3) calc(var(--global-spacing-unit) * 1.5); /* Use spacing unit */
-    /* background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); */ /* Keep or remove if glass is preferred */
-    /* color: var(--text-color); */ /* Already set by glass-card if used */
-    border-radius: 20px; /* Match glass-card if this is also a glass-card */
-}
-
-.hero-section h1 {
-    /* font-size: 2.5rem; */ /* Handled by global h1 */
-    margin-bottom: 1rem; /* Adjusted margin */
-    position: relative;
-    z-index: 1;
-    display: inline-block;
-    padding-bottom: 0.3em;
-}
-
-.hero-section h1::after { /* Simpler underline, using accent color */
-    content: '';
-    display: block;
-    width: 70%; /* Wider underline */
-    height: 4px;
-    background: var(--secondary-color); /* Use secondary for pop */
-    border-radius: 2px;
-    margin: 0.4em auto 0 auto; /* Adjusted margin */
-}
-
-.hero-section p {
-    font-size: 1.125rem; /* Slightly adjusted size */
-    margin-bottom: 2rem; /* Increased margin */
-    max-width: 600px; /* Constrain width for readability */
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Features Section */
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Center features */
-    gap: calc(var(--global-spacing-unit) * 1.5); /* Use spacing unit */
-    z-index: 1;
-}
-
-.feature { /* Assuming .feature items are .glass-card or similar */
-    flex: 1 1 calc(33.333% - 3rem); /* Adjust basis for gap */
-    min-width: 280px; /* Minimum width for features */
-    text-align: center;
-    /* padding: 20px; */ /* Handled by .glass-card */
-    /* background-color: var(--card-bg); */ /* Handled by .glass-card */
-    /* border-radius: 10px; */ /* Handled by .glass-card */
-    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.18); */ /* Handled by .glass-card */
-    /* transition: transform 0.3s, background 0.3s, color 0.3s; */ /* Handled by .glass-card */
-    /* color: var(--text-color); */ /* Handled by .glass-card */
-    /* border: 1px solid var(--glass-border); */ /* Handled by .glass-card */
-}
-
-.feature img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1.5rem; /* Adjusted margin */
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.10); /* Slightly enhanced shadow */
-}
-
-.feature h2, .feature h3 { /* Ensure heading colors are correct within features */
-    color: var(--text-color) !important; /* Override if necessary, or ensure specificity */
-    margin-top: 0.5rem;
-}
-
-.feature p {
-    color: var(--text-color) !important; /* Override if necessary */
-    font-size: 0.95rem; /* Slightly smaller text for feature cards */
-}
-
-/* Remove redundant styling if .feature elements are always .glass-card */
-/*
-.features .feature {
-    background: var(--glass-bg) !important;
-    color: var(--text-color) !important;
-    border: 1px solid var(--glass-border) !important;
-}
-
-body.light-theme .features .feature {
-    background: var(--glass-bg);
-    color: var(--text-color);
-    border: 1px solid var(--glass-border);
-}
-*/
-
-/* Animated Gradient Background */
-body.animated-bg {
-    position: relative;
-    background-color: var(--background-color) !important; /* Ensure it uses the new variable */
-    transition: background-color 0.3s;
-}
-
-.animated-bg .bg-blob {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.35; /* Slightly more visible */
-    filter: blur(40px); /* More blur */
-    animation: blobMove 20s ease-in-out infinite alternate;
-    pointer-events: none;
-    z-index: -1; /* Ensure blobs are behind content */
-}
-
-/* Adjusted blob colors to match new palette */
-.bg-blob1 {
-    width: 350px; height: 350px;
-    background: linear-gradient(135deg, var(--primary-color-dark) 0%, var(--secondary-color-dark) 100%);
-    top: -100px; left: -100px;
-    animation-delay: 0s;
-}
-.bg-blob2 {
-    width: 250px; height: 250px;
-    background: linear-gradient(135deg, var(--secondary-color-dark) 0%, var(--accent-color-dark) 100%);
-    bottom: -80px; right: -80px;
-    animation-delay: 7s;
-}
-.bg-blob3 {
-    width: 200px; height: 200px;
-    background: linear-gradient(135deg, var(--accent-color-dark) 0%, var(--primary-color-dark) 100%);
-    top: 35%; left: 65%;
-    animation-delay: 14s;
-}
-
-/* Light theme blobs */
-:root.light-theme .bg-blob1 {
-    background: linear-gradient(135deg, var(--secondary-color-light) 0%, var(--accent-color-light) 100%);
-}
-:root.light-theme .bg-blob2 {
-    background: linear-gradient(135deg, var(--accent-color-light) 0%, #d0e0f0 100%); /* Adding a very light blue */
-}
-:root.light-theme .bg-blob3 {
-    background: linear-gradient(135deg, #d0e0f0 0%, var(--secondary-color-light) 100%);
-}
-
-
-@keyframes blobMove {
-    0%   { transform: scale(1) translate(0, 0) rotate(0deg); }
-    33%  { transform: scale(1.1, 0.9) translate(40px, -30px) rotate(120deg); }
-    66%  { transform: scale(0.9, 1.1) translate(-30px, 40px) rotate(240deg); }
-    100% { transform: scale(1) translate(0, 0) rotate(360deg); }
-}
-
-/* body.animated-bg.light-theme is handled by :root.light-theme .bg-blob rules */
-
-
-@keyframes gradientMove { /* This seems unused, remove if not needed */
-    0% {background-position: 0% 50%;}
-    50% {background-position: 100% 50%;}
-    100% {background-position: 0% 50%;}
-}
-
-/* Decorative SVG Shapes */
-/* Re-evaluate if these are still needed with new blob styles */
-/* If kept, ensure colors match new palette */
-.decorative-svg {
-    position: absolute;
-    z-index: -1; /* Ensure they are behind content like blobs */
-    pointer-events: none;
-    opacity: 0.5; /* Adjust opacity as needed */
-}
-/* Example: Update one SVG's fill. Repeat for others if kept. */
-.decorative-svg-home circle {
-    fill: var(--secondary-color); /* Use new color variable */
-    fill-opacity: 0.1; /* Adjust opacity */
-}
-.decorative-svg-about circle { /* Assuming it's a circle too */
-    fill: var(--accent-color);
-    fill-opacity: 0.1;
-}
-.decorative-svg-contact circle {
-    fill: var(--primary-color); /* Or a different accent */
-    fill-opacity: 0.08;
-}
-/* ... and so on for other SVGs ... */
-
-/* Team Section Cards */
-.team {
-    display: flex;
-    gap: calc(var(--global-spacing-unit) * 1.5); /* Use spacing unit */
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.team .card { /* Assuming these are standard cards, not glass */
-    background: var(--card-bg);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1); /* Adjusted shadow */
-    border-radius: 16px;
-    padding: 1.5rem;
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    color: var(--text-color);
-    flex: 1 1 300px; /* Flex properties for responsiveness */
-}
-
-.team .card:hover {
-    transform: scale(1.03) translateY(-5px); /* Adjusted hover effect */
-    box-shadow: 0 10px 24px rgba(0,0,0,0.15);
-}
-
-/* Responsive Glass Cards - Adjustments */
-@media (max-width: 768px) {
-    .team { /* This rule for team stacking is fine as is */
-        flex-direction: column;
-        gap: var(--global-spacing-unit);
-    }
-    .glass-card { /* This rule for glass-card padding is also fine for 768px */
-        padding: calc(var(--global-spacing-unit) * 1.5);
-        margin: var(--global-spacing-unit) 0;
-    }
-    /* The main header/footer flex-direction changes are moved into the new 768px block above for consolidation */
-}
-
-/* Advanced Header and Footer Styles */
-.main-header {
-    margin: 0 auto;
-    padding: calc(var(--global-spacing-unit) * 0.75) calc(var(--global-spacing-unit) * 2);
-    background: var(--glass-bg);
-    position: relative;
-    z-index: 10;
-    max-width: 1300px;
-    color: var(--text-color);
     width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
     box-sizing: border-box;
-    flex-shrink: 0;
 }
+
+/* Header */
+.main-header {
+    background: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 1rem 2rem;
+}
+
 .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    font-size: 1.5rem;
+    margin: 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--global-spacing-unit); /* Use spacing unit */
+    gap: 0.5rem;
 }
-.logo-icon {
-    font-size: 1.8rem; /* Slightly smaller logo icon */
-    margin-right: 0.5rem;
-    vertical-align: middle;
-    color: var(--secondary-color); /* Color the icon */
-}
+
 .main-nav {
     display: flex;
-    gap: var(--global-spacing-unit); /* Use spacing unit */
-    background: transparent; /* Remove specific background, rely on header's glass */
-    padding: 0; /* Remove padding, spacing handled by gap */
-    border-radius: 12px;
-    box-shadow: none; /* Remove shadow, rely on header's shadow */
+    gap: 1.5rem;
 }
+
 .main-nav a {
-    color: var(--text-color); /* Use main text color, secondary for active/hover */
-    font-weight: 500; /* Poppins medium */
-    text-decoration: none;
-    padding: 0.5rem 1rem; /* Adjusted padding */
-    border-radius: 8px; /* Consistent border-radius */
-    transition: background-color 0.25s ease, color 0.25s ease;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 0;
+    position: relative;
 }
-.main-nav a {
-    position: relative; /* For underline pseudo-element */
+
+.main-nav a.active, .main-nav a:hover {
+    color: var(--primary-color);
 }
 
 .main-nav a::after {
     content: '';
     position: absolute;
+    bottom: 0;
+    left: 0;
     width: 0;
     height: 2px;
-    bottom: -4px; /* Position the underline below the link */
-    left: 50%;
-    background-color: var(--secondary-color);
-    transition: width 0.3s ease-out, left 0.3s ease-out;
+    background: var(--primary-color);
+    transition: width 0.3s;
 }
 
-.main-nav a:hover::after, .main-nav a.active::after {
+.main-nav a.active::after, .main-nav a:hover::after {
     width: 100%;
-    left: 0;
 }
 
-.main-nav a:hover, .main-nav a.active {
-    color: var(--secondary-color); /* Emphasize text color on hover/active */
-    background-color: transparent; /* Remove background color change if underline is preferred */
+/* Buttons */
+.cta-button, button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 102, 153, 0.2);
 }
 
-/* Ensure .active class also gets the text color emphasis if not hovering */
-.main-nav a.active {
-    color: var(--secondary-color);
+.cta-button:hover, button:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px);
 }
 
-.main-footer {
-    margin: 0 auto;
-    padding: calc(var(--global-spacing-unit) * 0.75) calc(var(--global-spacing-unit) * 2);
-    background: var(--glass-bg);
-    max-width: 1300px;
-    position: relative;
-    z-index: 10;
-    color: var(--text-color);
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Cards */
+.glass-card, .card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+input, textarea, select {
     width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    transition: border-color 0.3s;
     box-sizing: border-box;
-    flex-shrink: 0;
 }
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 102, 153, 0.1);
+}
+
+/* Upload Area */
+.image-upload-area {
+    border: 2px dashed var(--secondary-color);
+    border-radius: 12px;
+    padding: 3rem;
+    text-align: center;
+    background: rgba(32, 178, 170, 0.05);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.image-upload-area:hover {
+    background: rgba(32, 178, 170, 0.1);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+/* Features */
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.feature {
+    text-align: center;
+}
+
+.feature-icon svg {
+    margin-bottom: 1rem;
+}
+
+/* Results & Progress Bar */
+.result-card {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    height: 20px;
+    width: 100%;
+    margin-top: 0.5rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background-color: var(--secondary-color);
+    height: 100%;
+    border-radius: 8px;
+    width: 0%;
+    transition: width 1s ease-in-out;
+    text-align: center;
+    color: white;
+    font-size: 0.8rem;
+    line-height: 20px;
+}
+
+.confidence-badge {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    margin-left: 0.5rem;
+}
+
+/* Loader */
+.loader {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 1rem auto;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* Footer */
+.main-footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+}
+
+.main-footer a {
+    color: rgba(255,255,255,0.8);
+    margin: 0 0.5rem;
+}
+.main-footer a:hover {
+    color: white;
+}
+
 .footer-content {
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: var(--global-spacing-unit); /* Use spacing unit */
-}
-.footer-logo {
-    font-size: 1.3rem; /* Slightly smaller footer logo */
-    margin-right: 0.5rem;
-    color: var(--secondary-color); /* Color the icon */
-}
-.footer-nav {
-    display: flex;
-    gap: calc(var(--global-spacing-unit) * 0.75); /* Use spacing unit */
-}
-.footer-nav a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem; /* Adjusted padding */
-    border-radius: 8px;
-    transition: background-color 0.25s ease, color 0.25s ease;
-}
-.footer-nav a {
-    position: relative;
 }
 
-.footer-nav a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -4px;
-    left: 50%;
-    background-color: var(--secondary-color);
-    transition: width 0.3s ease-out, left 0.3s ease-out;
+/* Responsive */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .main-nav {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
 }
 
-.footer-nav a:hover::after, .footer-nav a.active::after {
-    width: 100%;
-    left: 0;
-}
-
-.footer-nav a:hover, .footer-nav a.active {
-    color: var(--secondary-color);
-    background-color: transparent;
-}
-
-.footer-nav a.active {
-    color: var(--secondary-color);
-}
-
-/* Remove this specific media query block as its contents have been merged into the more comprehensive ones above or are already covered */
-/* @media (max-width: 768px) { */
-    /* .main-header, .main-footer { */
-        /* margin-left: var(--global-spacing-unit); */
-        /* margin-right: var(--global-spacing-unit); */
-        /* padding-left: var(--global-spacing-unit); */
-        /* padding-right: var(--global-spacing-unit); */
-    /* } */
-    /* .header-content { ... } */ /* Merged into the new 768px block */
-    /* .footer-content { ... } */ /* Merged into the new 768px block */
-    /* .main-nav, .footer-nav { ... } */ /* Merged into the new 768px block */
-    /* .main-nav a, .footer-nav a { ... } */ /* Merged into the new 768px block */
-/* } */
-
-/* Theme Switch */
-.theme-switch {
-    position: fixed;
-    top: 1.5rem; /* Adjusted position */
-    right: 1.5rem;
-    z-index: 1000;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 50px; /* Make it a pill shape */
-    padding: 0.6rem 1.2rem; /* Adjusted padding */
-    cursor: pointer;
-    color: var(--text-color);
-    font-weight: 500; /* Medium weight */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Softer shadow */
-    transition: background-color 0.3s, color 0.3s, transform 0.2s;
-}
-.theme-switch:hover {
-    transform: scale(1.05); /* Slight scale on hover */
-}
-
-
-/* Toast Notification */
-#toast-notification {
-    font-family: var(--font-family);
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-/* Scroll-based Animations */
-.section-fade-in-up {
-    opacity: 0;
-    transform: translateY(30px); /* Increased from 20px for more noticeable effect */
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-}
-
-.section-fade-in-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* CSS Loader for Dashboard */
-.loader {
-    border: 5px solid var(--card-bg-light); /* Lighter border for the track */
-    border-top: 5px solid var(--secondary-color); /* Accent color for the spinner */
-    border-radius: 50%;
-    width: 50px;  /* Increased size */
-    height: 50px; /* Increased size */
-    animation: spin 1.2s linear infinite; /* Slightly slower spin */
-    margin: 25px auto; /* Adjusted margin */
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Dashboard Image Upload Area Styles */
-.image-upload-area {
-    border: 2px dashed var(--glass-border);
-    border-radius: 12px;
-    padding: calc(var(--global-spacing-unit) * 2);
-    text-align: center;
-    background-color: rgba(var(--primary-color-dark), 0.05); /* Subtle background tint */
-    cursor: pointer;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
-    margin-bottom: calc(var(--global-spacing-unit) * 1.5);
-}
-
-:root.light-theme .image-upload-area {
-    background-color: rgba(var(--primary-color-light), 0.5); /* Adjust for light theme if needed */
-    border-color: var(--accent-color-light);
-}
-
-.image-upload-area:hover, .image-upload-area.drag-over {
-    border-color: var(--secondary-color);
-    background-color: rgba(var(--secondary-color-dark), 0.1);
-}
-
-:root.light-theme .image-upload-area:hover, :root.light-theme .image-upload-area.drag-over {
-    border-color: var(--secondary-color-light);
-    background-color: rgba(var(--secondary-color-light), 0.08);
-}
-
-.image-upload-area .upload-icon {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: var(--global-spacing-unit);
-    color: var(--secondary-color);
-}
-
-.image-upload-area p {
-    margin-bottom: var(--global-spacing-unit);
-    color: var(--text-color-muted);
-}
-
-.image-upload-area .browse-button {
-    display: inline-block; /* To allow margin auto if needed, or just for consistency */
-    padding: 0.6rem 1.2rem; /* Slightly smaller than main CTA */
-    font-size: 0.9rem;
-}
-
-.upload-error {
-    color: #ff6f61; /* Error red */
-    font-weight: 500;
-    margin-top: var(--global-spacing-unit);
-    font-size: 0.9rem;
-}
-
-/* Profile Page Specific Styles */
-/* Ensure this is not duplicated if already present */
-.profile-container {
-    padding: calc(var(--global-spacing-unit) * 2);
-}
-
-.profile-header {
-    text-align: center;
-    margin-bottom: calc(var(--global-spacing-unit) * 2);
-}
-
-.avatar-placeholder {
-    width: 120px;
-    height: 120px;
-    background-color: var(--accent-color); /* Using accent color for a bit more pop */
-    border-radius: 50%;
-    margin: 0 auto calc(var(--global-spacing-unit) * 1.5) auto;
+/* History List */
+.history-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 4rem; /* Larger for a placeholder icon */
-    color: var(--primary-color); /* Text color that contrasts with accent */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
 }
 
-.user-info h2 {
-    margin-bottom: calc(var(--global-spacing-unit) * 0.5);
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-.user-info p {
-    margin-bottom: calc(var(--global-spacing-unit) * 0.25);
-    color: var(--text-color-muted);
-    font-size: 0.95rem;
-}
-
-.profile-settings, .activity-log {
-    margin-top: calc(var(--global-spacing-unit) * 2.5);
-    padding-top: calc(var(--global-spacing-unit) * 1.5);
-    border-top: 1px solid var(--glass-border);
-}
-
-.profile-settings h3, .activity-log h3 {
-    margin-bottom: calc(var(--global-spacing-unit) * 1.5);
-    color: var(--secondary-color);
-    font-weight: 600;
-}
-
-.setting-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--global-spacing-unit) 0;
-    border-bottom: 1px solid var(--glass-border);
-    gap: var(--global-spacing-unit);
-}
-.setting-item:last-child {
+.history-item:last-child {
     border-bottom: none;
 }
 
-.setting-item label {
-    font-weight: 500;
-    color: var(--text-color);
-    flex-shrink: 0; /* Prevent label from shrinking */
-}
-
-.setting-item .control-placeholder {
-    color: var(--text-color-muted);
-    font-style: italic;
-    text-align: right;
-}
-
-/* Disabled button style for profile page */
-.profile-settings button[disabled] {
-    background-color: var(--accent-color-dark); /* A less prominent color */
-    color: var(--text-color-muted);
-    cursor: not-allowed;
-    opacity: 0.7;
-    box-shadow: none;
-}
-:root.light-theme .profile-settings button[disabled] {
-    background-color: var(--hover-color-light);
-}
-
-
-.activity-log ul {
-    list-style: none;
-    padding: 0;
-}
-
-.activity-log li {
-    padding: calc(var(--global-spacing-unit) * 0.75) 0;
-    border-bottom: 1px dashed var(--glass-border); /* Dashed for variety */
-    color: var(--text-color-muted);
-    font-size: 0.9rem;
-}
-.activity-log li:last-child {
-    border-bottom: none;
-}
-
-/* Dashboard Analysis History List Styles */
-.history {
-    margin-top: calc(var(--global-spacing-unit) * 2);
-}
-
-.history h2 {
-    margin-bottom: calc(var(--global-spacing-unit) * 1);
-    color: var(--secondary-color); /* Consistent heading color */
-}
-
-.history ul#historyList {
-    list-style: none;
-    padding: 0;
-    max-height: 400px; /* Limit height and make scrollable */
-    overflow-y: auto;
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    padding: var(--global-spacing-unit);
-    background-color: rgba(var(--card-bg-dark-rgb, 20, 30, 40), 0.5); /* Use RGB version of card-bg-dark if available for opacity */
-}
-
-:root.light-theme .history ul#historyList {
-    background-color: rgba(var(--card-bg-light-rgb, 255, 255, 255), 0.7); /* Use RGB version of card-bg-light */
-    border-color: var(--glass-border-light);
-}
-
-
-.history li.history-item {
-    display: flex; /* Use flexbox for alignment */
-    align-items: center; /* Vertically align items */
-    padding: calc(var(--global-spacing-unit) * 0.75);
-    margin-bottom: calc(var(--global-spacing-unit) * 0.75);
-    background-color: var(--card-bg); /* Use card background for items */
-    border: 1px solid var(--glass-border);
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    transition: background-color 0.3s;
-}
-
-.history li.history-item:last-child {
-    margin-bottom: 0;
-}
-
-.history li.history-item:hover {
-    background-color: var(--hover-color); /* Use hover color from theme */
-}
-
-.history li.history-item span {
-    display: block; /* Make spans take full width or use flex properties */
-    margin-right: var(--global-spacing-unit); /* Spacing between elements */
-    color: var(--text-color);
-}
-.history li.history-item span:last-child {
-    margin-right: 0;
-}
-
-
-.history .history-preview { /* Already styled in JS, but can be centralized here */
+.history-thumb {
     width: 50px;
     height: 50px;
-    object-fit: cover;
     border-radius: 4px;
-    margin-right: var(--global-spacing-unit);
-    border: 1px solid var(--glass-border);
+    object-fit: cover;
 }
 
-.history .history-timestamp {
-    font-size: 0.85rem;
-    color: var(--text-color-muted);
-    min-width: 140px; /* Give timestamp some space */
+.history-details {
+    flex: 1;
 }
 
-.history .history-name {
-    font-weight: 500; /* Medium weight for name */
-    flex-grow: 1; /* Allow name to take available space */
-    word-break: break-word; /* Prevent long names from breaking layout */
-}
-
-.history .history-result {
-    font-style: italic;
-    color: var(--secondary-color); /* Highlight result */
-    min-width: 150px; /* Give result some space */
-    text-align: right;
-}
-
-/* Style for "No history yet" or "Error loading history" messages */
-.history ul#historyList li:only-child {
-    text-align: center;
-    color: var(--text-color-muted);
-    padding: var(--global-spacing-unit) * 2;
-    background-color: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-.clear-history-btn { /* Style for the clear history button */
-    background-color: var(--accent-color-dark); /* A less prominent color, or a "destructive action" color */
-    color: var(--text-color-dark);
-    padding: 0.6rem 1rem; /* Smaller padding */
-    font-size: 0.9rem;
-    margin-bottom: var(--global-spacing-unit); /* Space below button */
-}
-
-:root.light-theme .clear-history-btn {
-    background-color: var(--accent-color-light);
-    color: var(--text-color-light);
-}
-
-.clear-history-btn:hover {
-    background-color: #ff6f61; /* A common 'delete' or 'warning' color on hover */
-    color: #fff;
-}
-
-/* Contact Page Specific Styles */
-.contact-section {
-    display: flex; /* Enable flexbox */
-    flex-wrap: wrap; /* Allow items to wrap */
-    gap: calc(var(--global-spacing-unit) * 2); /* Space between form and info */
-}
-
-.contact-section form {
-    flex: 2; /* Form takes more space */
-    min-width: 300px; /* Minimum width before wrapping */
-}
-
-.contact-section .contact-info {
-    flex: 1; /* Info section takes less space */
-    min-width: 250px; /* Minimum width */
-    background-color: var(--card-bg); /* Optional: give it a slightly different bg */
-    padding: var(--global-spacing-unit);
-    border-radius: 8px;
-}
-
-.contact-info .contact-image {
-    width: 100%; /* Make image responsive */
-    max-width: 350px; /* Optional: prevent it from becoming too large on wider screens if flex item grows */
-    height: auto;    /* Maintain aspect ratio */
-    margin-top: 1rem; /* Add some space above it */
-    border-radius: 6px; /* Consistent rounding */
-    display: block; /* Ensure it behaves as a block for margin auto if needed */
-    margin-left: auto;
-    margin-right: auto;
-}
-/* Ensure labels in contact form have some space, and inputs are full width */
-.contact-section form label {
-    margin-bottom: calc(var(--global-spacing-unit) * 0.25); /* Space below label */
-    font-weight: 500;
-}
-.contact-section form input,
-.contact-section form textarea {
-    width: 100%; /* Explicitly full width for contact form inputs */
-    box-sizing: border-box; /* Include padding and border in width */
-}
-
-
-@media (max-width: 768px) { /* Tablet and below for contact section */
-    .contact-section {
-        flex-direction: column; /* Stack form and info */
-    }
-    .contact-section form,
-    .contact-section .contact-info {
-        flex: none; /* Reset flex factor */
-        width: 100%; /* Full width when stacked */
-    }
-}
-
-/* Dashboard history item refinement for small screens */
-@media (max-width: 480px) { /* Adjusted breakpoint slightly */
-    .history li.history-item {
-        flex-direction: column;
-        align-items: flex-start; /* Align items to the start */
-        gap: calc(var(--global-spacing-unit) * 0.5); /* Add gap for stacked items */
-    }
-    .history .history-preview {
-        margin-bottom: 0.5rem; /* Space if stacking */
-        margin-right: 0; /* Remove right margin when stacked */
-    }
-    .history .history-timestamp,
-    .history .history-name,
-    .history .history-result {
-        min-width: 0; /* Reset min-width */
-        width: 100%; /* Take full width */
-        text-align: left; /* Align left if stacked */
-    }
-    .history .history-result {
-        margin-top: 0.5rem; /* Space above result when stacked */
-    }
-    .history li.history-item span { /* Adjust span behavior when stacked */
-        margin-right: 0;
-    }
-}
-
-/* Password Toggle Icon */
-.password-toggle-icon {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
-    user-select: none;
+.history-status {
+    font-weight: 600;
+    color: var(--primary-color);
 }
