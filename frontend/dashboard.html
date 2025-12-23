@@ -52,24 +52,25 @@
             </div>
 
             <div id="result-content" style="display: none;">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                <div id="report-image-container" class="print-only" style="text-align: center; margin-bottom: 20px;"></div>
+                <div class="result-header">
                     <div>
                         <h3>Prediction</h3>
-                        <p id="prediction-label" style="font-size: 1.2rem; color: var(--text-color); font-weight: 600;">-</p>
+                        <p id="prediction-label" class="prediction-text">-</p>
                     </div>
                     <div style="text-align: right;">
-                        <span id="timestamp" style="font-size: 0.9rem; color: var(--text-color-muted);"></span>
+                        <span id="timestamp" class="timestamp-text"></span>
                     </div>
                 </div>
 
-                <div style="margin: 1.5rem 0;">
+                <div class="confidence-section">
                     <label>Confidence Score</label>
                     <div class="progress-container">
                         <div id="confidence-bar" class="progress-bar">0%</div>
                     </div>
                 </div>
 
-                <div style="background-color: rgba(32, 178, 170, 0.1); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--secondary-color);">
+                <div class="explanation-box">
                     <strong>Next Steps:</strong>
                     <p id="explanation-text" style="margin: 0.5rem 0 0 0;">Please review this result with a medical professional.</p>
                 </div>

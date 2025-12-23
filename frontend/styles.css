@@ -248,6 +248,36 @@ input:focus, textarea:focus {
     text-align: left;
 }
 
+.result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.prediction-text {
+    font-size: 1.2rem;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.timestamp-text {
+    font-size: 0.9rem;
+    color: var(--text-color-muted);
+}
+
+.confidence-section {
+    margin: 1.5rem 0;
+}
+
+.explanation-box {
+    background-color: rgba(32, 178, 170, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
 .progress-container {
     background-color: #e0e0e0;
     border-radius: 8px;
@@ -373,13 +403,19 @@ input:focus, textarea:focus {
     #image-drop-zone, .theme-switch,
     .main-nav, .cta-button,
     #clearHistoryBtn, button,
-    .history-section-title, #historyList {
+    .history-section-title, #historyList,
+    #preview-container, #upload-error-message,
+    .glass-card:not(#results-section) {
         display: none !important;
     }
 
     body {
-        background-color: white;
-        color: black;
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .print-only {
+        display: block !important;
     }
 
     main {
@@ -389,27 +425,34 @@ input:focus, textarea:focus {
     }
 
     .glass-card {
-        box-shadow: none;
-        border: none;
-        padding: 0;
-        margin: 0;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        background: transparent !important;
     }
 
     /* Specifically target the result section */
     #results-section {
         display: block !important;
-        position: absolute;
-        top: 0;
-        left: 0;
+        position: static !important; /* Reset position for flow */
         width: 100%;
+        margin-top: 0;
+        background-color: white !important;
+        color: black !important;
+        border: none !important;
     }
 
-    h1, h2, h3 {
+    .explanation-box {
+        background-color: white !important;
+        border: 1px solid #ccc !important;
+        border-left: 4px solid black !important;
         color: black !important;
     }
 
-    p, span, label, div {
+    h1, h2, h3, h4, h5, h6, p, span, label, div {
         color: black !important;
+        text-shadow: none !important;
     }
 
     /* Ensure progress bar is visible (print browsers often strip backgrounds) */

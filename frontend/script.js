@@ -75,9 +75,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export Report Function
 function exportReport() {
-    // Add timestamp data attribute for CSS print content
     const resultSection = document.getElementById('results-section');
-    if (resultSection) {
+    const previewImage = document.getElementById('previewImage');
+    const reportImageContainer = document.getElementById('report-image-container');
+
+    if (resultSection && resultSection.style.display !== 'none') {
+        // Clone image for report
+        if (previewImage && reportImageContainer) {
+            reportImageContainer.innerHTML = ''; // Clear previous
+            const imgClone = previewImage.cloneNode(true);
+            imgClone.style.maxWidth = '300px';
+            imgClone.style.maxHeight = '300px';
+            imgClone.style.borderRadius = '8px';
+            imgClone.style.margin = '0 auto';
+            imgClone.style.display = 'block';
+            reportImageContainer.appendChild(imgClone);
+        }
+
+        // Add timestamp data attribute for CSS print content
         resultSection.setAttribute('data-timestamp', new Date().toLocaleString());
         window.print();
     } else {
