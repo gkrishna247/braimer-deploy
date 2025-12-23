@@ -2,64 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#161625">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Login - Brain Tumor Detection</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <title>Login</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
-<body class="animated-bg">
-    <div class="bg-blob bg-blob1"></div>
-    <div class="bg-blob bg-blob2"></div>
-    <div class="bg-blob bg-blob3"></div>
-    <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌙/☀️</button>
-    <svg class="decorative-svg decorative-svg-login" viewBox="0 0 120 120" aria-hidden="true"><circle fill="#2575fc" fill-opacity="0.10" cx="60" cy="60" r="60"/></svg>
-    <header class="main-header glass-card">
+<body>
+    <header class="main-header">
         <div class="header-content">
-            <h1><span class="logo-icon" aria-label="logo">🧠</span> Brain Tumor Detection System</h1>
-            <nav class="main-nav" aria-label="Main navigation">
+            <h1><span class="logo-icon">🧠</span> BrainAI</h1>
+            <nav class="main-nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="active">Login</a>
+                <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">🌓</button>
             </nav>
         </div>
     </header>
-    <main>
-        <div class="container card glass-card" style="max-width:400px;margin:auto;" id="login">
-            <h2 style="text-align:center;">Login</h2>
+
+    <main style="display: flex; align-items: center; justify-content: center;">
+        <div class="glass-card" style="width: 100%; max-width: 400px; padding: 2.5rem;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 class="h2">Welcome Back</h2>
+                <p>Secure Login for Medical Professionals</p>
+            </div>
+
             <form onsubmit="event.preventDefault(); login();" aria-label="Login form" autocomplete="on">
                 <div class="form-group">
-                    <label for="login-email">Email</label>
-                    <input type="email" id="login-email" name="login-email" required autocomplete="username">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" name="login-email" required autocomplete="username" placeholder="doctor@hospital.org">
                 </div>
-                <div class="form-group" style="position: relative;">
+                <div class="form-group">
                     <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="login-password" required autocomplete="current-password">
-                    <span class="password-toggle-icon" onclick="togglePasswordVisibility('login-password')">👁️</span>
+                    <input type="password" id="login-password" name="login-password" required autocomplete="current-password" placeholder="••••••••">
                 </div>
-                <button type="submit" class="cta-button" style="width:100%;">Login</button>
+                <button type="submit" class="cta-button" style="width:100%; margin-top: 1rem;">Sign In</button>
             </form>
-            <div class="switch-form" style="text-align:center;margin-top:1rem;">
-                <a href="#">Don't have an account? Sign up</a>
+
+            <div style="text-align:center; margin-top: 1.5rem; font-size: 0.9rem;">
+                <a href="#" style="color: var(--primary-color);">Forgot Password?</a>
             </div>
         </div>
     </main>
-    <footer class="main-footer glass-card">
+
+    <footer class="main-footer">
         <div class="footer-content">
-            <span class="footer-logo" aria-label="logo">🧠</span>
-            <span>&copy; 2025 Brain Tumor Detection System. All rights reserved.</span>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html">Contact</a>
-                <a href="profile.html">Profile</a>
-            </nav>
+            <p>&copy; 2025 BrainAI Medical Systems. All rights reserved.</p>
         </div>
     </footer>
 </body>

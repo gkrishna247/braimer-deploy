@@ -2,66 +2,86 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="theme-color" content="#161625">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Contact Us - Brain Tumor Detection</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <title>Contact Us</title>
     <script src="script.js" defer></script>
 </head>
-<body class="animated-bg">
-    <div class="bg-blob bg-blob1"></div>
-    <div class="bg-blob bg-blob2"></div>
-    <div class="bg-blob bg-blob3"></div>
-    <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark/light mode">🌙/☀️</button>
-    <svg class="decorative-svg decorative-svg-contact" viewBox="0 0 140 140" aria-hidden="true"><circle fill="#6a11cb" fill-opacity="0.10" cx="70" cy="70" r="70"/></svg>
-    <header class="main-header glass-card">
+<body>
+    <header class="main-header">
         <div class="header-content">
-            <h1><span class="logo-icon" aria-label="logo">🧠</span> Brain Tumor Detection System</h1>
-            <nav class="main-nav" aria-label="Main navigation">
+            <h1><span class="logo-icon">🧠</span> BrainAI</h1>
+            <nav class="main-nav">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="contact.html" class="active">Contact</a>
                 <a href="login.html">Login</a>
+                <button class="theme-switch" onclick="toggleTheme()" aria-label="Toggle dark mode" style="background:none; border:none; font-size:1.2rem; cursor:pointer;">🌓</button>
             </nav>
         </div>
     </header>
+
     <main>
-        <section class="contact-section glass-card" id="contact">
-            <h2>Get in Touch</h2>
-            <form autocomplete="on" aria-label="Contact form">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required autocomplete="name">
+        <div class="glass-card" style="margin-bottom: 2rem; text-align: center;">
+            <h1 class="h1">Get in Touch</h1>
+            <p>Have questions about BrainAI? Our support team is here to help.</p>
+        </div>
 
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required autocomplete="email">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+            <div class="glass-card">
+                <form aria-label="Contact form" onsubmit="event.preventDefault(); showToast('Message sent! (Demo)', 'success'); this.reset();">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
 
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" required></textarea>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
 
-                <button type="submit">Send</button>
-            </form>
-            <div class="contact-info">
-                <p>Email: <a href="mailto:support@braimer.com">support@braimer.com</a></p>
-                <p>Phone: <a href="tel:+18005551234">+1-800-555-1234</a></p>
-                <img src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=400&h=200&q=80" alt="Contact Us" class="contact-image">
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <select id="subject" name="subject">
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="partnership">Partnership</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="How can we help you?"></textarea>
+                    </div>
+
+                    <button type="submit" class="cta-button" style="width: 100%;">Send Message</button>
+                </form>
             </div>
-        </section>
+
+            <div class="glass-card">
+                <h3 class="h3">Contact Information</h3>
+                <p>Feel free to reach out to us directly.</p>
+
+                <div style="margin-top: 2rem;">
+                    <p><strong>Email:</strong> <a href="mailto:support@brainai.med">support@brainai.med</a></p>
+                    <p><strong>Phone:</strong> <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                    <p><strong>Headquarters:</strong><br>
+                    123 Innovation Drive,<br>
+                    Tech Valley, CA 94043</p>
+                </div>
+
+                <div style="margin-top: 2rem; width: 100%; height: 200px; background-color: #eee; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #888;">
+                    [Map Placeholder]
+                </div>
+            </div>
+        </div>
     </main>
-    <footer class="main-footer glass-card">
+
+    <footer class="main-footer">
         <div class="footer-content">
-            <span class="footer-logo" aria-label="logo">🧠</span>
-            <span>&copy; 2025 Brain Tumor Detection System. All rights reserved.</span>
-            <nav class="footer-nav" aria-label="Footer navigation">
-                <a href="index.html">Home</a>
-                <a href="about.html">About</a>
-                <a href="services.html">Services</a>
-                <a href="contact.html" class="active">Contact</a>
-                <a href="profile.html">Profile</a>
-            </nav>
+            <p>&copy; 2025 BrainAI Medical Systems. All rights reserved.</p>
         </div>
     </footer>
 </body>

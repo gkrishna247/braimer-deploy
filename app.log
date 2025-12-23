@@ -1,10 +1,10 @@
-2025-12-23 08:52:44.993870: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-2025-12-23 08:52:45.759087: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2025-12-23 09:01:20.114284: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2025-12-23 09:01:21.495876: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2025-12-23 08:52:50.382116: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2025-12-23 09:01:25.616022: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
 /home/jules/.pyenv/versions/3.12.12/lib/python3.12/site-packages/keras/src/export/tf2onnx_lib.py:8: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
   if not hasattr(np, "object"):
-2025-12-23 08:52:52.288980: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-12-23 09:01:26.616037: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
 Model 'effnet.h5' loaded successfully.
  * Serving Flask app 'app'
@@ -15,16 +15,25 @@ INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a
  * Running on http://192.168.0.2:5002
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
 INFO:werkzeug: * Restarting with stat
-2025-12-23 08:52:55.760222: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
-2025-12-23 08:52:56.032908: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+2025-12-23 09:01:29.619997: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2025-12-23 09:01:29.900114: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
-2025-12-23 08:52:59.504309: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
+2025-12-23 09:01:33.312930: I external/local_xla/xla/tsl/cuda/cudart_stub.cc:31] Could not find cuda drivers on your machine, GPU will not be used.
 /home/jules/.pyenv/versions/3.12.12/lib/python3.12/site-packages/keras/src/export/tf2onnx_lib.py:8: FutureWarning: In the future `np.object` will be defined as the corresponding NumPy scalar.
   if not hasattr(np, "object"):
-2025-12-23 08:53:01.039473: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
+2025-12-23 09:01:34.363743: E external/local_xla/xla/stream_executor/cuda/cuda_platform.cc:51] failed call to cuInit: INTERNAL: CUDA error: Failed call to cuInit: UNKNOWN ERROR (303)
 WARNING:absl:Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.
 WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 132-491-319
-INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 08:53:05] "GET /dashboard.html HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 08:53:06] "GET /styles.css HTTP/1.1" 200 -
-INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 08:53:06] "GET /script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:37] "GET /login.html HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:37] "GET /styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:37] "GET /script.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:38] "GET /services.html HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:38] "[36mGET /styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:38] "[36mGET /script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:39] "GET /about.html HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:39] "[36mGET /script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:39] "[36mGET /styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:40] "GET /contact.html HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:40] "[36mGET /script.js HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [23/Dec/2025 09:01:40] "[36mGET /styles.css HTTP/1.1[0m" 304 -
